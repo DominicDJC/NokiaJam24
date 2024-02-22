@@ -14,8 +14,21 @@ var _hurting = false
 
 func get_input():
 	var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
-	moving = (input_direction != Vector2(0, 0))
+	moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
 	velocity = input_direction * speed
+
+
+func hurt(damage):
+	_hurting = true
+	health.hurt(damage)
+	print("Player health: " + str(health.get_health()))
+	if health.get_health() <= 0:
+		kill()
+
+
+func kill():
+	print("Player should have died here")
+
 
 func _physics_process(delta):
 	_update_player_sprite()
@@ -43,9 +56,9 @@ func _update_player_sprite():
 		if !_player_sprite.is_playing():
 			_player_sprite.play()
 		if _player_sprite.frame == 2:
-			_player_sprite = false
+			_hurting = false
 	else:
-		if moving:
+		if velocity != Vector2(0, 0):
 			if _player_sprite.animation != "right":
 				_player_sprite.play("right")
 		else:

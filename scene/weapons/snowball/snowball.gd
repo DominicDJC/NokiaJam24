@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var _player: CharacterBody2D
-var _damage = 5
+var _damage = 25
 var _distance_from_player = 15
 var _rotation_speed = 3
 var _angle = 0

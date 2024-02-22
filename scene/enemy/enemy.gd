@@ -2,34 +2,58 @@ extends CharacterBody2D
 
 enum Enemies {BAT}
 @export var speed = 5
+@export var _collision: CollisionShape2D
+@export var _bat: AnimatedSprite2D
 var health = Health.new()
 var player: CharacterBody2D
-var type: Enemies
+var type = "null"
+var active = false
 var _virtual_position = Vector2(0, 0)
 var _hurting = false
-@onready var _bat = $Bat
 
 
 
 func _physics_process(delta):
-	match type:
-		Enemies.BAT:
-			_bat_control()
-			_bat_animation_control()
+	if active:
+		match type:
+			"bat":
+				_bat_control()
+				_bat_animation_control()
 
 
-func init(new_player: CharacterBody2D, enemy_type: Enemies):
+func init(new_player: CharacterBody2D, enemy_type: String, new_position: Vector2):
+	if active:
+		deactivate()
 	player = new_player
-	reset(enemy_type)
-
-
-func reset(enemy_type: Enemies):
-	pass
+	global_position = new_position
+	_virtual_position = position
+	type = enemy_type
+	activate()
 
 
 func hurt(damage):
 	_hurting = true
 	health.hurt(damage)
+	if health.get_health() <= 0:
+		kill()
+
+
+func kill():
+	deactivate()
+
+
+func activate():
+	health = Health.new()
+	active = true
+	visible = true
+	if _bat.is_playing():
+		_bat.pause()
+
+
+func deactivate():
+	active = false
+	visible = false
+	_bat.pause()
 
 
 func _sprite_flipping(sprite: AnimatedSprite2D):
@@ -46,7 +70,7 @@ func _bat_control():
 	var angle = global_position.angle_to_point(player.global_position)
 	if _hurting:
 		velocity = Vector2(cos(angle), sin(angle))
-		velocity = velocity * speed * -5
+		velocity = velocity * -40
 	else:
 		velocity = Vector2(cos(angle), sin(angle))
 		velocity = velocity * speed
@@ -73,3 +97,8 @@ func _bat_animation_control():
 			if !_bat.is_playing():
 				_bat.play()
 			_sprite_flipping(_bat)
+
+
+func _on_attack_area_2d_body_entered(body):
+	if body == player:
+		player.hurt(10)

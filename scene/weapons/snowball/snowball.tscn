@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scene/weapons/snowball/snowball.gd" id="1_ydl1u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sxms"]
-radius = 4.0
+radius = 2.0
 
 [node name="Snowball" type="Node2D"]
 script = ExtResource("1_ydl1u")
@@ -13,6 +13,8 @@ script = ExtResource("1_ydl1u")
 texture = ExtResource("1_8mdu4")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_4sxms")
