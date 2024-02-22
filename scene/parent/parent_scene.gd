@@ -4,9 +4,13 @@ extends Node
 @onready var game = preload("res://scene/game/game.tscn")
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	_load_main_menu()
+
+# We can remove this when we don't need it anymore. This will play the game
+func _process(delta):
+	if Input.is_action_just_pressed("key_0"):
+		_load_game()
 
 
 func _clear_current_scene():
