@@ -12,12 +12,6 @@ var _cooldown = 0.0
 var _hurting = false
 
 
-func get_input():
-	var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
-	moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
-	velocity = input_direction * speed
-
-
 func hurt(damage):
 	_hurting = true
 	health.hurt(damage)
@@ -30,10 +24,16 @@ func kill():
 	print("Player should have died here")
 
 
+func _get_input():
+	var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
+	moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
+	velocity = input_direction * speed
+
+
 func _physics_process(delta):
 	_update_player_sprite()
 	
-	get_input()
+	_get_input()
 	position = _virtual_position
 	move_and_slide()
 	_virtual_position = position
@@ -67,6 +67,7 @@ func _update_player_sprite():
 		if !_player_sprite.is_playing():
 			_player_sprite.play()
 	_sprite_flipping()
+
 
 func _sprite_flipping():
 	if velocity.x > 0:

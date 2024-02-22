@@ -13,8 +13,18 @@ func _ready():
 		new_enemy("bat")
 
 
-#func _process(delta):
-	#_print_enemies()
+func new_enemy(type: String):
+	var target: CharacterBody2D
+	for child in get_children():
+		if !child.active:
+			print("Reusing")
+			target = child
+			break
+	if !target:
+		print("Fresh")
+		target = enemy.instantiate()
+	target.init(player, type, _get_spawn_position())
+	add_child(target)
 
 
 func _print_enemies():
@@ -49,16 +59,3 @@ func _get_spawn_position() -> Vector2:
 			spawn_position.y = player_position.y + _rng.randi_range(-40, 40)
 	return spawn_position
 
-
-func new_enemy(type: String):
-	var target: CharacterBody2D
-	for child in get_children():
-		if !child.active:
-			print("Reusing")
-			target = child
-			break
-	if !target:
-		print("Fresh")
-		target = enemy.instantiate()
-	target.init(player, type, _get_spawn_position())
-	add_child(target)
