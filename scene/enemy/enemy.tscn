@@ -77,4 +77,4 @@ shape = SubResource("CircleShape2D_d8po5")
 
 [node name="Bat" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0wfqd")
-animation = &"flying"
+animation = &"hurt"

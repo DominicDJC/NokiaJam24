@@ -1,0 +1,157 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcnsug82u0mj"]
+
+[ext_resource type="Texture2D" uid="uid://b40x1ulhgi6t0" path="res://assets/img/UI/In-Game/equipment_ui.png" id="1_64iiu"]
+[ext_resource type="Script" path="res://scene/UI/In-Game/menus/equipment_menu.gd" id="1_tvk1o"]
+[ext_resource type="Texture2D" uid="uid://cj6dpsr43yhpb" path="res://assets/img/UI/In-Game/cards/cards_snow ball.png" id="3_5428l"]
+[ext_resource type="Texture2D" uid="uid://bf17r0lufn1p6" path="res://assets/img/UI/In-Game/cards/cards_nocard.png" id="4_yfq12"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2g5ot"]
+load_path = "res://.godot/imported/equipment_ui.png-f27d012c4a585053185da790439bb02f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkswu"]
+atlas = SubResource("CompressedTexture2D_2g5ot")
+region = Rect2(1, 52, 46, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28ppe"]
+atlas = SubResource("CompressedTexture2D_2g5ot")
+region = Rect2(84, 0, 5, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rel1i"]
+atlas = SubResource("CompressedTexture2D_2g5ot")
+region = Rect2(91, 0, 5, 48)
+
+[sub_resource type="InputEventKey" id="InputEventKey_fnq1s"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_upaf8"]
+events = [SubResource("InputEventKey_fnq1s")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3qv8"]
+atlas = ExtResource("1_64iiu")
+region = Rect2(49, 49, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4kql"]
+atlas = ExtResource("1_64iiu")
+region = Rect2(65, 49, 14, 14)
+
+[node name="EquipmentMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tvk1o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.780392, 0.941176, 0.847059, 1)
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_right = 18.0
+offset_bottom = 7.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_lkswu")
+stretch_mode = 2
+
+[node name="Decoration1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 5.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_28ppe")
+stretch_mode = 5
+
+[node name="Decoration2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_rel1i")
+stretch_mode = 5
+
+[node name="ReturnToGameButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -20.0
+offset_right = -6.0
+offset_bottom = 14.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../Equipment/Slot3")
+focus_neighbor_right = NodePath("../Equipment/Slot1")
+focus_next = NodePath("../Equipment/Slot1")
+shortcut = SubResource("Shortcut_upaf8")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_s3qv8")
+texture_focused = SubResource("AtlasTexture_b4kql")
+
+[node name="Equipment" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Slot1" type="TextureButton" parent="Equipment"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 12.0
+offset_right = 34.0
+offset_bottom = 46.0
+focus_neighbor_left = NodePath("../../ReturnToGameButton")
+focus_neighbor_right = NodePath("../Slot2")
+focus_next = NodePath("../Slot2")
+focus_previous = NodePath("../../ReturnToGameButton")
+texture_normal = ExtResource("3_5428l")
+
+[node name="Slot3" type="TextureButton" parent="Equipment"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 12.0
+offset_right = 66.0
+offset_bottom = 46.0
+focus_neighbor_left = NodePath("../Slot2")
+focus_neighbor_right = NodePath("../../ReturnToGameButton")
+focus_next = NodePath("../../ReturnToGameButton")
+focus_previous = NodePath("../Slot2")
+texture_normal = ExtResource("4_yfq12")
+
+[node name="Slot2" type="TextureButton" parent="Equipment"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 12.0
+offset_right = 49.0
+offset_bottom = 46.0
+focus_neighbor_left = NodePath("../Slot1")
+focus_neighbor_right = NodePath("../Slot3")
+focus_next = NodePath("../Slot3")
+focus_previous = NodePath("../Slot1")
+texture_normal = ExtResource("4_yfq12")
+
+[connection signal="focus_entered" from="Equipment/Slot1" to="." method="_on_slot_1_focus_entered"]
+[connection signal="focus_exited" from="Equipment/Slot1" to="." method="_on_slot_1_focus_exited"]
+[connection signal="focus_entered" from="Equipment/Slot3" to="." method="_on_slot_3_focus_entered"]
+[connection signal="focus_exited" from="Equipment/Slot3" to="." method="_on_slot_3_focus_exited"]
+[connection signal="focus_entered" from="Equipment/Slot2" to="." method="_on_slot_2_focus_entered"]
+[connection signal="focus_exited" from="Equipment/Slot2" to="." method="_on_slot_2_focus_exited"]
