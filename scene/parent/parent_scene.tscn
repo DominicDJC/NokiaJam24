@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://brs4jg4y8d7mi"]
+
+[ext_resource type="Script" path="res://scene/parent/parent_scene.gd" id="1_8g8oq"]
+
+[node name="ParentScene" type="Node"]
+script = ExtResource("1_8g8oq")

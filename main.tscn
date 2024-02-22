@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://pstqes7jcym2"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_nrtmp"]
-[ext_resource type="PackedScene" uid="uid://c6giusprlr2fb" path="res://scene/game/game.tscn" id="2_khp14"]
+[ext_resource type="PackedScene" uid="uid://brs4jg4y8d7mi" path="res://scene/parent/parent_scene.tscn" id="2_au133"]
 [ext_resource type="Shader" path="res://assets/shaders/nokia-3310.gdshader" id="3_dhqyx"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l502v"]
@@ -28,7 +28,7 @@ transparent_bg = true
 snap_2d_vertices_to_pixel = true
 size = Vector2i(84, 48)
 
-[node name="Game" parent="Screen" instance=ExtResource("2_khp14")]
+[node name="ParentScene" parent="Screen" instance=ExtResource("2_au133")]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
 unique_name_in_owner = true
