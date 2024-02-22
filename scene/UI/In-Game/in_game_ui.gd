@@ -1,27 +1,37 @@
 extends Control
 
-# Hello hello, Cromain. Try to stay in this (in_game_ui.tscn) scene for all the in game UI work.
-# It is already set up to activate and deactive when time is frozen via the scripts below.
-# You shouldn't have to worry about implementing any code in the actual game scene itself.
+# 1280x720
 
-# The UI is currently set to the viewport size of 1280x720, don't change that.
-# It will automatically scale the UI correctly when you run the game
-# So it will be weird because the text is gonna be really small while editing,
-# but it will be right in the game. See the "test" text label as an example of that
+var in_menu: bool = false
+
+@onready var game_ui = $GameUI
+@onready var menus = $Menus
+@onready var freeze_ui = $GameUI/FreezeUI
+@onready var pause_ap = $GameUI/AnimationPlayer
 
 ## Current active state. Used by the game node in game.tscn
 var active = true
 
+func _ready() -> void:
+	menus.close_menu.connect(_close_menu)
 
+func _process(_delta):
+	if active and not in_menu:
+		if Input.is_action_just_pressed("key_0"):
+			in_menu = true
+			game_ui.set_visible(false)
+			menus.open_menu()
+		
 ## GameUI activation script. Will run once when time is frozen
 func activate():
 	active = true
-	visible = true
-	# any activation code can go here
-
+	pause_ap.play("freeze_in")
 
 ## GameUI deactivation script. Will run once when time is unfrozen
 func deactivate():
 	active = false
-	visible = false
-	# any deactivation code can go here
+	pause_ap.play("freeze_out")
+
+func _close_menu() -> void:
+	in_menu = false
+	game_ui.set_visible(true)
