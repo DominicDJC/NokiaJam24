@@ -2,6 +2,7 @@ extends Node
 
 @onready var main_menu = preload("res://scene/UI/MainMenu/main_menu.tscn")
 @onready var game = preload("res://scene/game/game.tscn")
+@onready var game_over = preload("res://scene/UI/GameOver/game_over.tscn")
 
 
 func _ready():
@@ -30,4 +31,11 @@ func _load_main_menu():
 func _load_game():
 	_clear_current_scene()
 	var g = game.instantiate()
+	g.gameover.connect(self._load_game_over)
 	add_child(g)
+
+
+func _load_game_over():
+	_clear_current_scene()
+	var go = game_over.instantiate()
+	add_child(go)

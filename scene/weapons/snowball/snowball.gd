@@ -8,7 +8,7 @@ var _angle = 0
 
 
 func _physics_process(delta):
-	if !TIME.frozen:
+	if !Global.frozen:
 		_angle += _rotation_speed * delta
 		position = round(_player.position + (_distance_from_player * Vector2(cos(_angle), sin(_angle))))
 

@@ -32,13 +32,15 @@ func init(new_player: CharacterBody2D, enemy_type: String, new_position: Vector2
 
 
 func hurt(damage):
-	_hurting = true
-	health.hurt(damage)
-	if health.get_health() <= 0:
-		kill()
+	if active:
+		_hurting = true
+		health.hurt(damage)
+		if health.get_health() <= 0:
+			kill()
 
 
 func kill():
+	Global.increment_kills()
 	deactivate()
 
 
@@ -64,7 +66,7 @@ func _sprite_flipping(sprite: AnimatedSprite2D):
 
 
 func _bat_control():
-	if !player or TIME.frozen:
+	if !player or Global.frozen:
 		return
 	
 	var angle = global_position.angle_to_point(player.global_position)
@@ -81,7 +83,7 @@ func _bat_control():
 
 
 func _bat_animation_control():
-	if TIME.frozen:
+	if Global.frozen:
 		_bat.pause()
 	else:
 		if _hurting:

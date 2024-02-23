@@ -43,10 +43,10 @@ func _physics_process(delta):
 	if _cooldown < 0:
 		_cooldown = 0
 	if moving:
-		TIME.unfreeze()
+		Global.unfreeze()
 		_cooldown = 0.3
 	elif _cooldown <= 0:
-		TIME.freeze()
+		Global.freeze()
 
 
 func _update_player_sprite():
