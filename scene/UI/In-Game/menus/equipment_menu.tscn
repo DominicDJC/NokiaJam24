@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcnsug82u0mj"]
+[gd_scene load_steps=14 format=3 uid="uid://bcnsug82u0mj"]
 
 [ext_resource type="Texture2D" uid="uid://b40x1ulhgi6t0" path="res://assets/img/UI/In-Game/equipment_ui.png" id="1_64iiu"]
 [ext_resource type="Script" path="res://scene/UI/In-Game/menus/equipment_menu.gd" id="1_tvk1o"]
@@ -12,8 +12,11 @@ load_path = "res://.godot/imported/equipment_ui.png-f27d012c4a585053185da790439b
 atlas = SubResource("CompressedTexture2D_2g5ot")
 region = Rect2(1, 52, 46, 7)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dpcvs"]
+load_path = "res://.godot/imported/equipment_ui.png-f27d012c4a585053185da790439bb02f.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_28ppe"]
-atlas = SubResource("CompressedTexture2D_2g5ot")
+atlas = SubResource("CompressedTexture2D_dpcvs")
 region = Rect2(84, 0, 5, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rel1i"]

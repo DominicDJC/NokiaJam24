@@ -1,6 +1,7 @@
 extends Control
 
 signal close_menu 
+signal card_menu
 
 var in_menu: bool = false
 
@@ -22,6 +23,18 @@ func _process(_delta):
 			match focus_owner:
 				return_button:
 					close_menu.emit()
+					in_menu = false
+				
+				slot1:
+					card_menu.emit("card1")
+					in_menu = false
+					
+				slot2:
+					card_menu.emit("card1")
+					in_menu = false
+					
+				slot3:
+					card_menu.emit("card1")
 					in_menu = false
 		
 		elif Input.is_action_just_pressed("key_6"):
