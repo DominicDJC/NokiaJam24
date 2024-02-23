@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://wka26vm2fg26"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://wka26vm2fg26"]
 
 [ext_resource type="Script" path="res://scene/resources/Card.gd" id="1_i5uir"]
+[ext_resource type="Texture2D" uid="uid://ojexp8fi7bh8" path="res://assets/img/UI/In-Game/cards/cards_slowtime.png" id="1_jdvwj"]
 
 [resource]
 script = ExtResource("1_i5uir")
-name = "Time"
+name = "Slow Time"
 description = "Time stays frozen for a short period of time after you move"
+card_texture = ExtResource("1_jdvwj")
 type = "buff"
 weapon = ""
 effects = {

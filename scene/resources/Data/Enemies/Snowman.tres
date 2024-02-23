@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://cpo14ohbmlid3"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://cpo14ohbmlid3"]
 
 [ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_fd4ln"]
+[ext_resource type="Texture2D" uid="uid://h0xy2j3dn7ji" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_snowman.png" id="1_h3ul2"]
 
 [resource]
 script = ExtResource("1_fd4ln")
-name = "Snake"
+name = "Snowman"
+icon_texture = ExtResource("1_h3ul2")

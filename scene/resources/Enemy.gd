@@ -3,10 +3,10 @@ class_name Enemy extends Resource
 @export var name: String
 @export var icon_texture: Texture
 
-const HOT_GROUNDS = preload("res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres")
-const ICE_AXE = preload("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres")
-const ICE_PICK = preload("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres")
-const SNOWBALL = preload("res://scene/resources/Data/Cards/Weapons/Snowball.tres")
+var HOT_GROUNDS = load("res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres")
+var ICE_AXE = load("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres")
+var ICE_PICK = load("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres")
+var SNOWBALL = load("res://scene/resources/Data/Cards/Weapons/Snowball.tres")
 
 
 func get_supported_weapon() -> Card:

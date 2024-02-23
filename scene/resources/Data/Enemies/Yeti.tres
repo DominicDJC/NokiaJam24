@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://c8kx3myorusok"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://c8kx3myorusok"]
 
+[ext_resource type="Texture2D" uid="uid://csy1cigpy5mki" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_yeti.png" id="1_7aecx"]
 [ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_7i58y"]
 
 [resource]
 script = ExtResource("1_7i58y")
-name = "FlyingSkull"
+name = "Yeti"
+icon_texture = ExtResource("1_7aecx")

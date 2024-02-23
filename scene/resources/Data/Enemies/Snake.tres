@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://e0e2ocq8yhux"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://e0e2ocq8yhux"]
 
+[ext_resource type="Texture2D" uid="uid://cew42qmyhelg5" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_snake.png" id="1_1bg2a"]
 [ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_xeq24"]
 
 [resource]
 script = ExtResource("1_xeq24")
-name = "Wolf"
+name = "Snake"
+icon_texture = ExtResource("1_1bg2a")

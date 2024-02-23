@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://dlgeu1e83stv8"]
+
+[ext_resource type="Texture2D" uid="uid://t1070diqkerb" path="res://assets/img/UI/In-Game/cards/cards_attackup.png" id="1_p0kio"]
+[ext_resource type="Script" path="res://scene/resources/Card.gd" id="2_ya8sa"]
+
+[resource]
+script = ExtResource("2_ya8sa")
+name = "Attack Up"
+description = "Deal more damage"
+card_texture = ExtResource("1_p0kio")
+type = "buff"
+weapon = ""
+effects = {
+"damage": 5,
+"defense": 0,
+"health": 0,
+"speed": 0,
+"time": 0
+}

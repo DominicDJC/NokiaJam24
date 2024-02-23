@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://b0caoy2y083ng"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://b0caoy2y083ng"]
 
+[ext_resource type="Texture2D" uid="uid://cq8cjnv1hxo3p" path="res://assets/img/UI/In-Game/cards/cards_healthup.png" id="1_ff1xv"]
 [ext_resource type="Script" path="res://scene/resources/Card.gd" id="1_s20u7"]
 
 [resource]
 script = ExtResource("1_s20u7")
-name = "Health"
+name = "Health Up"
 description = "Increase health"
+card_texture = ExtResource("1_ff1xv")
 type = "buff"
 weapon = ""
 effects = {

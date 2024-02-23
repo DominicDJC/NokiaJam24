@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://d2bmk2amtd51x"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://d2bmk2amtd51x"]
 
+[ext_resource type="Texture2D" uid="uid://cuy3a8oluwpfs" path="res://assets/img/UI/In-Game/cards/cards_defenseup.png" id="1_bdubk"]
 [ext_resource type="Script" path="res://scene/resources/Card.gd" id="1_d1v5v"]
 
 [resource]
 script = ExtResource("1_d1v5v")
-name = "Defense"
-description = "Increase defense"
+name = "Shield Up"
+description = "Take less damage"
+card_texture = ExtResource("1_bdubk")
 type = "buff"
 weapon = ""
 effects = {

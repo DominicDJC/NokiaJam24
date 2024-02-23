@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://ca845sxnfqjcl"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://ca845sxnfqjcl"]
 
+[ext_resource type="Texture2D" uid="uid://d0bx643ewm2kh" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_bat.png" id="1_ehvij"]
 [ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_qaj25"]
 
 [resource]
 script = ExtResource("1_qaj25")
 name = "Bat"
+icon_texture = ExtResource("1_ehvij")

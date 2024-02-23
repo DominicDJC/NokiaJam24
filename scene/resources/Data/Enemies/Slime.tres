@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://dasponnw7la2s"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://dasponnw7la2s"]
 
+[ext_resource type="Texture2D" uid="uid://chhrtofaut3ut" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_slime.png" id="1_qiqxj"]
 [ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_qp3v0"]
 
 [resource]
 script = ExtResource("1_qp3v0")
 name = "Slime"
+icon_texture = ExtResource("1_qiqxj")

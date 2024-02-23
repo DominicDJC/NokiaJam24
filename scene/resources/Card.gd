@@ -13,14 +13,14 @@ class_name Card extends Resource
 	"time":0,
 }
 
-const BAT = preload("res://scene/resources/Data/Enemies/Bat.tres")
-const FLYING_SKULL = preload("res://scene/resources/Data/Enemies/FlyingSkull.tres")
-const SLIME = preload("res://scene/resources/Data/Enemies/Slime.tres")
-const SNAKE = preload("res://scene/resources/Data/Enemies/Snake.tres")
-const SNOWMAN = preload("res://scene/resources/Data/Enemies/Snowman.tres")
-const WOLF = preload("res://scene/resources/Data/Enemies/Wolf.tres")
-const YETI = preload("res://scene/resources/Data/Enemies/Yeti.tres")
-const ZOMBIE = preload("res://scene/resources/Data/Enemies/Zombie.tres")
+var BAT = load("res://scene/resources/Data/Enemies/Bat.tres")
+var FLYING_SKULL = load("res://scene/resources/Data/Enemies/FlyingSkull.tres")
+var SLIME = load("res://scene/resources/Data/Enemies/Slime.tres")
+var SNAKE = load("res://scene/resources/Data/Enemies/Snake.tres")
+var SNOWMAN = load("res://scene/resources/Data/Enemies/Snowman.tres")
+var WOLF = load("res://scene/resources/Data/Enemies/Wolf.tres")
+var YETI = load("res://scene/resources/Data/Enemies/Yeti.tres")
+var ZOMBIE = load("res://scene/resources/Data/Enemies/Zombie.tres")
 
 
 func get_damageable_enemies() -> Array:
@@ -31,6 +31,6 @@ func get_damageable_enemies() -> Array:
 		"iceaxe": [WOLF, SNAKE],
 		"hotgrounds": [SNOWMAN, SLIME]
 	}
-	if data.has(name):
-		enemies = data[name]
-	return []
+	if data.has(weapon):
+		enemies = data[weapon]
+	return enemies

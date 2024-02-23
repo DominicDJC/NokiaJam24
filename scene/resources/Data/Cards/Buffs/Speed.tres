@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://ct2e78bsfoo3t"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://ct2e78bsfoo3t"]
 
+[ext_resource type="Texture2D" uid="uid://be62kjha4lj6u" path="res://assets/img/UI/In-Game/cards/cards_speedup.png" id="1_1oy8v"]
 [ext_resource type="Script" path="res://scene/resources/Card.gd" id="1_7iv38"]
 
 [resource]
 script = ExtResource("1_7iv38")
-name = "Health"
-description = "Increase health by 5"
+name = "Speed Up"
+description = "Increase speed"
+card_texture = ExtResource("1_1oy8v")
 type = ""
 weapon = ""
 effects = {

@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://doyybf4h5dr71"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=3 format=3 uid="uid://doyybf4h5dr71"]
 
 [ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_4yjmw"]
+[ext_resource type="Texture2D" uid="uid://dmuovcigw222q" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_flying_skull.png" id="1_vhhuk"]
 
 [resource]
 script = ExtResource("1_4yjmw")
 name = "Flying Skull"
+icon_texture = ExtResource("1_vhhuk")
