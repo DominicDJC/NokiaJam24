@@ -1,0 +1,201 @@
+[gd_scene load_steps=16 format=3 uid="uid://n1uvfwr4mcn4"]
+
+[ext_resource type="Script" path="res://scene/UI/In-Game/menus/card_pick_menu.gd" id="1_rp6rq"]
+[ext_resource type="Texture2D" uid="uid://cntn4ceqktdgt" path="res://assets/img/UI/In-Game/card_pick.png" id="2_qgj80"]
+[ext_resource type="Texture2D" uid="uid://cj6dpsr43yhpb" path="res://assets/img/UI/In-Game/cards/cards_snow ball.png" id="3_eyh41"]
+[ext_resource type="FontFile" uid="uid://djah1i7xp3xuf" path="res://assets/fonts/tiny/tiny.ttf" id="4_65sru"]
+[ext_resource type="Texture2D" uid="uid://d0bx643ewm2kh" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_bat.png" id="5_8wiuh"]
+[ext_resource type="Texture2D" uid="uid://dmuovcigw222q" path="res://assets/img/UI/In-Game/enemies_icons/enemies_card_flying_skull.png" id="6_tsf3n"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2g5ot"]
+load_path = "res://.godot/imported/equipment_ui.png-f27d012c4a585053185da790439bb02f.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejlxq"]
+atlas = SubResource("CompressedTexture2D_2g5ot")
+region = Rect2(84, 0, 5, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51q7s"]
+atlas = ExtResource("2_qgj80")
+region = Rect2(21, 84, 36, 24)
+
+[sub_resource type="InputEventKey" id="InputEventKey_fnq1s"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_k2eni"]
+events = [SubResource("InputEventKey_fnq1s")]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qby8v"]
+atlas = ExtResource("2_qgj80")
+region = Rect2(21, 51, 7, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odtlq"]
+atlas = ExtResource("2_qgj80")
+region = Rect2(53, 51, 7, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6bc8"]
+atlas = ExtResource("2_qgj80")
+region = Rect2(4, 51, 7, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m0n6"]
+atlas = ExtResource("2_qgj80")
+region = Rect2(36, 51, 7, 9)
+
+[node name="CardPickMenu" type="Control"]
+custom_minimum_size = Vector2(84, 48)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_rp6rq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.780392, 0.941176, 0.847059, 1)
+
+[node name="CardPicker" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Decoration1" type="TextureRect" parent="CardPicker"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 5.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ejlxq")
+stretch_mode = 5
+
+[node name="Decoration2" type="TextureRect" parent="CardPicker"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 35.0
+offset_right = 40.0
+offset_bottom = 8.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ejlxq")
+stretch_mode = 5
+flip_h = true
+
+[node name="CardDecoration" type="TextureRect" parent="CardPicker"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 38.0
+offset_bottom = 2.0
+grow_vertical = 2
+texture = SubResource("AtlasTexture_51q7s")
+stretch_mode = 5
+flip_h = true
+
+[node name="Card" type="TextureRect" parent="CardPicker"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 33.0
+offset_bottom = 38.0
+focus_neighbor_left = NodePath("../../ReturnToGameButton")
+focus_neighbor_right = NodePath("../Slot2")
+focus_next = NodePath("../Slot2")
+focus_previous = NodePath("../../ReturnToGameButton")
+texture = ExtResource("3_eyh41")
+
+[node name="NextCardButton" type="TextureButton" parent="CardPicker"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -12.0
+offset_top = 39.0
+offset_right = -5.0
+offset_bottom = 48.0
+grow_horizontal = 0
+focus_neighbor_left = NodePath("../Equipment/Slot3")
+focus_neighbor_right = NodePath("../Equipment/Slot1")
+focus_next = NodePath("../Equipment/Slot1")
+shortcut = SubResource("Shortcut_k2eni")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_qby8v")
+texture_focused = SubResource("AtlasTexture_odtlq")
+
+[node name="PrevCardButton" type="TextureButton" parent="CardPicker"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -35.0
+offset_top = 39.0
+offset_right = -28.0
+offset_bottom = 48.0
+grow_horizontal = 0
+shortcut = SubResource("Shortcut_k2eni")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = SubResource("AtlasTexture_x6bc8")
+texture_focused = SubResource("AtlasTexture_7m0n6")
+
+[node name="CardInfos" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 42.0
+offset_right = 82.0
+offset_bottom = 48.0
+
+[node name="Description" type="Label" parent="CardInfos"]
+layout_mode = 1
+offset_top = 1.0
+offset_right = 40.0
+offset_bottom = 9.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("4_65sru")
+theme_override_font_sizes/font_size = 6
+text = "ground area that inflict continous damage."
+autowrap_mode = 3
+
+[node name="PrimaryTarget" type="Label" parent="CardInfos"]
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 50.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/line_spacing = -1
+theme_override_fonts/font = ExtResource("4_65sru")
+theme_override_font_sizes/font_size = 6
+text = "
+P. targets"
+autowrap_mode = 3
+
+[node name="EnemyIcon1" type="TextureRect" parent="CardInfos"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_top = 37.0
+offset_right = 9.0
+offset_bottom = -2.0
+grow_vertical = 2
+texture = ExtResource("5_8wiuh")
+stretch_mode = 5
+
+[node name="EnemyIcon2" type="TextureRect" parent="CardInfos"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 37.0
+offset_right = 20.0
+offset_bottom = -2.0
+grow_vertical = 2
+texture = ExtResource("6_tsf3n")
+stretch_mode = 5

@@ -10,9 +10,9 @@ viewport_path = NodePath("Screen")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_udw2h"]
 resource_local_to_scene = true
 shader = ExtResource("3_dhqyx")
-shader_parameter/door_effect = 0.08
-shader_parameter/door_intensity = 0.7001
-shader_parameter/grain_amount = 0.07
+shader_parameter/door_effect = 0.0731
+shader_parameter/door_intensity = 0.8
+shader_parameter/grain_amount = 0.04
 shader_parameter/shadow_offset = Vector2(0.2, 0.2)
 shader_parameter/shadow_intensity = 0.2
 shader_parameter/screen = SubResource("ViewportTexture_l502v")
@@ -20,6 +20,7 @@ shader_parameter/screen = SubResource("ViewportTexture_l502v")
 [node name="Main" type="Node"]
 script = ExtResource("1_nrtmp")
 palette = 2
+pixel_ratio = 0.9
 
 [node name="Screen" type="SubViewport" parent="."]
 unique_name_in_owner = true
@@ -37,7 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-ratio = 1.36325
+ratio = 1.575
 
 [node name="NokiaShader" type="ColorRect" parent="AspectRatioContainer"]
 material = SubResource("ShaderMaterial_udw2h")

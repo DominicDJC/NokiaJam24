@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvrjsvy2ji1si"]
+[gd_scene load_steps=4 format=3 uid="uid://cvrjsvy2ji1si"]
 
 [ext_resource type="Script" path="res://scene/UI/In-Game/menus/menus.gd" id="1_1xjo2"]
 [ext_resource type="PackedScene" uid="uid://bcnsug82u0mj" path="res://scene/UI/In-Game/menus/equipment_menu.tscn" id="1_kkt5i"]
+[ext_resource type="PackedScene" uid="uid://n1uvfwr4mcn4" path="res://scene/UI/In-Game/menus/card_pick_menu.tscn" id="3_jshm2"]
 
 [node name="Menus" type="Control"]
 custom_minimum_size = Vector2(84, 48)
@@ -16,3 +17,6 @@ script = ExtResource("1_1xjo2")
 [node name="EquipmentMenu" parent="." instance=ExtResource("1_kkt5i")]
 visible = false
 layout_mode = 1
+
+[node name="CardPickMenu" parent="." instance=ExtResource("3_jshm2")]
+visible = false
