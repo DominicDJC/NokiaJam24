@@ -1,6 +1,304 @@
-[gd_scene load_steps=2 format=3 uid="uid://cexhfoahun87d"]
+[gd_scene load_steps=40 format=3 uid="uid://cexhfoahun87d"]
 
 [ext_resource type="Script" path="res://scene/UI/MainMenu/MainMenu.gd" id="1_w78gi"]
+[ext_resource type="Texture2D" uid="uid://deycvp0imtsod" path="res://assets/img/UI/TitleScreen/snow/snow1.png" id="2_fuocx"]
+[ext_resource type="Texture2D" uid="uid://c7jr6wvaqmbfj" path="res://assets/img/UI/TitleScreen/snow/snow2.png" id="3_voixm"]
+[ext_resource type="Texture2D" uid="uid://bhania4rqamvd" path="res://assets/img/UI/TitleScreen/snow/snow3.png" id="4_87llf"]
+[ext_resource type="Texture2D" uid="uid://i2xnss0rm5p0" path="res://assets/img/UI/TitleScreen/snow/snow4.png" id="5_xovl5"]
+[ext_resource type="Texture2D" uid="uid://b6kl1kary35cq" path="res://assets/img/UI/TitleScreen/snow/snow5.png" id="6_5agd6"]
+[ext_resource type="Texture2D" uid="uid://dtea76puh0h3c" path="res://assets/img/UI/TitleScreen/logo/lofo_freezin1.png" id="6_s06fp"]
+[ext_resource type="Texture2D" uid="uid://c3hbworpds6a8" path="res://assets/img/UI/TitleScreen/logo/lofo_freezin2.png" id="7_r1pdm"]
+[ext_resource type="Texture2D" uid="uid://dsaksmklor4g8" path="res://assets/img/UI/TitleScreen/snow/snow6.png" id="7_sm17y"]
+[ext_resource type="Texture2D" uid="uid://d1prn83dxge6r" path="res://assets/img/UI/TitleScreen/logo/lofo_freezin3.png" id="8_ls6n6"]
+[ext_resource type="Texture2D" uid="uid://cow7isyh03gso" path="res://assets/img/UI/TitleScreen/snow/snow7.png" id="8_tlxcm"]
+[ext_resource type="Texture2D" uid="uid://o4pwhwue141l" path="res://assets/img/UI/TitleScreen/logo/lofo_freezin4.png" id="9_nwwc5"]
+[ext_resource type="Texture2D" uid="uid://bvwojjb5aghqp" path="res://assets/img/UI/TitleScreen/snow/snow8.png" id="9_yi3ln"]
+[ext_resource type="Texture2D" uid="uid://dwhadhsgc5hq" path="res://assets/img/UI/TitleScreen/character/character_st1.png" id="10_2eau3"]
+[ext_resource type="Texture2D" uid="uid://l8dao3rldgkn" path="res://assets/img/UI/TitleScreen/logo/lofo_freezin5.png" id="10_tita0"]
+[ext_resource type="Texture2D" uid="uid://cgyn6sxrtce8f" path="res://assets/img/UI/TitleScreen/character/character_st4.png" id="11_24jcd"]
+[ext_resource type="Texture2D" uid="uid://badpnvublpgdn" path="res://assets/img/UI/TitleScreen/character/character_st6.png" id="12_pk50c"]
+[ext_resource type="Texture2D" uid="uid://ckeudn5oyw67g" path="res://assets/img/UI/TitleScreen/logo/lofo_time1.png" id="12_v7ltw"]
+[ext_resource type="Texture2D" uid="uid://3hvgfp3jolus" path="res://assets/img/UI/TitleScreen/moon.png" id="13_4lkpo"]
+[ext_resource type="Texture2D" uid="uid://dcu3gc6ldop28" path="res://assets/img/UI/TitleScreen/logo/lofo_time2.png" id="13_yc7es"]
+[ext_resource type="Texture2D" uid="uid://g6ot7vdqu68u" path="res://assets/img/UI/TitleScreen/logo/lofo_time3.png" id="14_g55dw"]
+[ext_resource type="Texture2D" uid="uid://dfsgo65w3pnia" path="res://assets/img/UI/TitleScreen/logo/lofo_time4.png" id="15_mp62x"]
+[ext_resource type="Texture2D" uid="uid://b8wjpma5ud283" path="res://assets/img/UI/TitleScreen/logo/lofo_time5.png" id="16_6upou"]
+[ext_resource type="Texture2D" uid="uid://cmfv3xubaabjh" path="res://assets/img/UI/TitleScreen/logo/lofo_time6.png" id="17_v1vg2"]
+[ext_resource type="Texture2D" uid="uid://duy002is242ao" path="res://assets/img/UI/TitleScreen/logo/lofo_time7.png" id="18_48c01"]
+[ext_resource type="Texture2D" uid="uid://balrhttu2v2jw" path="res://assets/img/UI/TitleScreen/logo/lofo_time8.png" id="19_o3237"]
+[ext_resource type="Texture2D" uid="uid://lg70b8gfpn6q" path="res://assets/img/UI/TitleScreen/logo/start_game1.png" id="19_t6j8k"]
+[ext_resource type="Texture2D" uid="uid://c5v2ewg3asca2" path="res://assets/img/UI/TitleScreen/logo/start_game2.png" id="20_5umkm"]
+[ext_resource type="Texture2D" uid="uid://dgo31yfjycsb4" path="res://assets/img/UI/TitleScreen/transition.png" id="29_6uiu4"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_jhhj0"]
+frames = 3
+frame_0/texture = ExtResource("10_2eau3")
+frame_0/duration = 0.3
+frame_1/texture = ExtResource("11_24jcd")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("12_pk50c")
+frame_2/duration = 0.3
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_yt64p"]
+frames = 5
+speed_scale = 5.0
+frame_0/texture = ExtResource("6_s06fp")
+frame_0/duration = 2.0
+frame_1/texture = ExtResource("7_r1pdm")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("8_ls6n6")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("9_nwwc5")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("10_tita0")
+frame_4/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_pyxcd"]
+frames = 8
+speed_scale = 5.0
+frame_0/texture = ExtResource("12_v7ltw")
+frame_1/texture = ExtResource("13_yc7es")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("14_g55dw")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("15_mp62x")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("16_6upou")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("17_v1vg2")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("18_48c01")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("19_o3237")
+frame_7/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_m6vvi"]
+resource_name = "intro"
+length = 4.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro/Moon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro/Character:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 85)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro/Logo:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -49), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Intro/StartGame:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1, 4.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Transition:texture:region")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 48, 84, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_lr35h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro/Moon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro/Character:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro/Logo:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Intro/StartGame:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Transition:texture:region")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 48, 84, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_00eto"]
+resource_name = "transition"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro/Moon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Intro/Character:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 85)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Intro/Logo:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Intro/StartGame:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Transition:texture:region")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 48, 84, 48), Rect2(0, 96, 84, 48), Rect2(0, 144, 84, 48), Rect2(0, 192, 84, 48), Rect2(0, 240, 84, 48), Rect2(0, 288, 84, 48), Rect2(0, 336, 84, 48), Rect2(0, 384, 84, 48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvbjk"]
+_data = {
+"RESET": SubResource("Animation_lr35h"),
+"intro": SubResource("Animation_m6vvi"),
+"transition": SubResource("Animation_00eto")
+}
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_fugai"]
+frames = 2
+speed_scale = 2.0
+frame_0/texture = ExtResource("19_t6j8k")
+frame_1/texture = ExtResource("20_5umkm")
+frame_1/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_bu185"]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("2_fuocx")
+frame_1/texture = ExtResource("3_voixm")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("4_87llf")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("5_xovl5")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("6_5agd6")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("7_sm17y")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("8_tlxcm")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("9_yi3ln")
+frame_7/duration = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08g8s"]
+atlas = ExtResource("29_6uiu4")
+region = Rect2(0, 48, 84, 48)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,8 +309,82 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_w78gi")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 10.0
-text = "Main menu"
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262745, 0.321569, 0.239216, 1)
+
+[node name="Intro" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="Moon" type="TextureRect" parent="Intro"]
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 48.0003
+texture = ExtResource("13_4lkpo")
+stretch_mode = 2
+
+[node name="Character" type="TextureRect" parent="Intro"]
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 48.0001
+texture = SubResource("AnimatedTexture_jhhj0")
+stretch_mode = 2
+
+[node name="Logo" type="Control" parent="Intro"]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="LogoFreezin" type="TextureRect" parent="Intro/Logo"]
+layout_mode = 1
+offset_top = -1.0
+offset_right = 84.0
+offset_bottom = 39.0
+texture = SubResource("AnimatedTexture_yt64p")
+expand_mode = 1
+
+[node name="LogoTime" type="TextureRect" parent="Intro/Logo"]
+layout_mode = 1
+offset_top = -4.0
+offset_right = 84.0
+offset_bottom = 44.0
+texture = SubResource("AnimatedTexture_pyxcd")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Intro"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_tvbjk")
+}
+autoplay = "intro"
+
+[node name="StartGame" type="TextureRect" parent="Intro"]
+visible = false
+layout_mode = 1
+offset_left = 13.0
+offset_top = 37.0
+offset_right = 71.0
+offset_bottom = 50.0
+texture = SubResource("AnimatedTexture_fugai")
+stretch_mode = 2
+
+[node name="Snow" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 48.0
+texture = SubResource("AnimatedTexture_bu185")
+stretch_mode = 2
+
+[node name="Transition" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_08g8s")
+stretch_mode = 2
+
+[connection signal="animation_finished" from="Intro/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
