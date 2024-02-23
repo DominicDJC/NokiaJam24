@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://caso2mh78xicr"]
+
+[ext_resource type="Texture2D" uid="uid://cdl3ux6liqfnn" path="res://assets/img/UI/In-Game/cards/cards_hot ground.png" id="1_0051y"]
+[ext_resource type="Script" path="res://scene/resources/Card.gd" id="2_r7l3f"]
+
+[resource]
+script = ExtResource("2_r7l3f")
+name = "Hot Grounds"
+description = "Enter hot grounds description"
+card_texture = ExtResource("1_0051y")
+type = "weapon"
+weapon = "hotgrounds"
+effects = {
+"damage": 0,
+"defense": 0,
+"health": 0,
+"speed": 0,
+"time": 0
+}

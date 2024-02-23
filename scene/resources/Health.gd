@@ -1,4 +1,4 @@
-class_name Health
+class_name Health extends Resource
 ## The health class. Manages health.
 ##
 ## Get health, heal, hurt, etc.

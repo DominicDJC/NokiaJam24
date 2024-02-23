@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://dasponnw7la2s"]
+
+[ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_qp3v0"]
+
+[resource]
+script = ExtResource("1_qp3v0")
+name = "Slime"

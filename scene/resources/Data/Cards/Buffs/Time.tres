@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://wka26vm2fg26"]
+
+[ext_resource type="Script" path="res://scene/resources/Card.gd" id="1_i5uir"]
+
+[resource]
+script = ExtResource("1_i5uir")
+name = "Time"
+description = "Time stays frozen for a short period of time after you move"
+type = "buff"
+weapon = ""
+effects = {
+"damage": 0,
+"defense": 0,
+"health": 0,
+"speed": 0,
+"time": 5
+}

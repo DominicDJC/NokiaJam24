@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://d2bmk2amtd51x"]
+
+[ext_resource type="Script" path="res://scene/resources/Card.gd" id="1_d1v5v"]
+
+[resource]
+script = ExtResource("1_d1v5v")
+name = "Defense"
+description = "Increase defense"
+type = "buff"
+weapon = ""
+effects = {
+"damage": 0,
+"defense": 5,
+"health": 0,
+"speed": 0,
+"time": 0
+}

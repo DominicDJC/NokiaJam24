@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=2 format=3 uid="uid://dkn4if5bm3tn6"]
+
+[ext_resource type="Script" path="res://scene/resources/Enemy.gd" id="1_hqkg3"]
+
+[resource]
+script = ExtResource("1_hqkg3")
+name = "Yeti"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://cpucdes32x3lh"]
+
+[ext_resource type="Texture2D" uid="uid://cby1e8uw2cnc7" path="res://assets/img/UI/In-Game/cards/cards_ice axe.png" id="1_fa2ls"]
+[ext_resource type="Script" path="res://scene/resources/Card.gd" id="2_83o0e"]
+
+[resource]
+script = ExtResource("2_83o0e")
+name = "Ice Axe"
+description = "Enter ice axe description"
+card_texture = ExtResource("1_fa2ls")
+type = "weapon"
+weapon = "iceaxe"
+effects = {
+"damage": 0,
+"defense": 0,
+"health": 0,
+"speed": 0,
+"time": 0
+}
