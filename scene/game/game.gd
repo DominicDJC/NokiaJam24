@@ -5,7 +5,7 @@ signal gameover
 
 
 func _ready():
-	Global.reset_time()
+	Global.reset_time_elapsed()
 
 
 # Handles the in-game ui, showing and hiding when time is frozen

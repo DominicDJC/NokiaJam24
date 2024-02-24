@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6giusprlr2fb"]
+[gd_scene load_steps=18 format=3 uid="uid://c6giusprlr2fb"]
 
 [ext_resource type="Texture2D" uid="uid://bjy06hfqok0au" path="res://assets/img/tilesets/brick_walls_light.png" id="1_jdasb"]
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_nispk"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://dsf8okjtvgivm" path="res://assets/img/tilesets/nature.png" id="4_il6hn"]
 [ext_resource type="Script" path="res://scene/game/Spawner.gd" id="7_et3kj"]
 [ext_resource type="PackedScene" uid="uid://bhcy5fgbb6s73" path="res://scene/UI/In-Game/in_game_ui.tscn" id="10_dhnfl"]
+[ext_resource type="PackedScene" uid="uid://5kv27ewaf3f6" path="res://scene/weapons/snowball/snowball.tscn" id="10_wxesl"]
+[ext_resource type="PackedScene" uid="uid://cy3dsopk7uass" path="res://scene/weapons/icepick/icepick.tscn" id="11_g6cxo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysga3"]
 texture = ExtResource("1_jdasb")
@@ -171,3 +173,9 @@ player = NodePath("../Player")
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="In-Game UI" parent="UICanvasLayer" instance=ExtResource("10_dhnfl")]
+
+[node name="Snowball" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_wxesl")]
+player = NodePath("../Player")
+
+[node name="icepick" parent="." node_paths=PackedStringArray("player") instance=ExtResource("11_g6cxo")]
+player = NodePath("../Player")

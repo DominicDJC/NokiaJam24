@@ -1,0 +1,78 @@
+[gd_scene load_steps=11 format=3 uid="uid://cy3dsopk7uass"]
+
+[ext_resource type="Script" path="res://scene/weapons/icepick/icepick.gd" id="1_6e4ck"]
+[ext_resource type="Texture2D" uid="uid://c30xm7uugh5i2" path="res://assets/img/weapons/icepick.png" id="2_m65wn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1lex"]
+atlas = ExtResource("2_m65wn")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6f6j"]
+atlas = ExtResource("2_m65wn")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_42w7h"]
+atlas = ExtResource("2_m65wn")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olhcs"]
+atlas = ExtResource("2_m65wn")
+region = Rect2(0, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn017"]
+atlas = ExtResource("2_m65wn")
+region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lfh8"]
+atlas = ExtResource("2_m65wn")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g63cl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1lex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6f6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42w7h")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olhcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn017")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2lfh8")
+}],
+"loop": false,
+"name": &"45",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_loppg"]
+radius = 3.16228
+
+[node name="icepick" type="Node2D"]
+script = ExtResource("1_6e4ck")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g63cl")
+animation = &"0"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_loppg")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

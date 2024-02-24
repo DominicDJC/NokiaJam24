@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 
 @export var speed = 15
@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 var health = Health.new()
 var moving = false
+var saved_rotation_vector: Vector2 = Vector2(1, 0)
 var _virtual_position = Vector2(0.0, 0.0)
 var _cooldown = 0.0
 var _hurting = false
@@ -28,6 +29,7 @@ func _get_input():
 	var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
 	moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
 	velocity = input_direction * speed
+	_update_saved_rotation_vector(input_direction)
 
 
 func _physics_process(delta):
@@ -76,3 +78,8 @@ func _sprite_flipping():
 	elif velocity.x < 0:
 		_player_sprite.flip_h = true
 		_player_sprite.offset.x = 2
+
+
+func _update_saved_rotation_vector(input_direction) -> void:
+	if input_direction != Vector2(0, 0):
+		saved_rotation_vector = input_direction
