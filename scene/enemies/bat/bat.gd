@@ -1,6 +1,5 @@
 class_name Bat extends Enemy2D
 
-@export var speed = 5
 @onready var _bat = $Bat
 
 func _physics_process(delta: float) -> void:

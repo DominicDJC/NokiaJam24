@@ -1,6 +1,5 @@
 class_name Yeti extends Enemy2D
 
-@export var speed = 5
 @onready var _yeti = $Yeti
 
 

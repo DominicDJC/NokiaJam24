@@ -1,12 +1,11 @@
 class_name FlyingSkull extends Enemy2D
 
-@export var speed = 5
 @onready var _flyingskull = $Flyingskull
 
-func _physics_process(delta: float) -> void:
-	if active:
-		_flyingskull_physics()
-		_flyingskull_animation()
+#func _physics_process(delta: float) -> void:
+	#if active:
+		#_flyingskull_physics()
+		#_flyingskull_animation()
 
 
 func _flyingskull_physics():

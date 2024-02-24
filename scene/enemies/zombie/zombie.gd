@@ -1,6 +1,5 @@
 class_name Zombie extends Enemy2D
 
-@export var speed = 5
 @onready var _zombie = $Zombie
 
 func _physics_process(delta: float) -> void:

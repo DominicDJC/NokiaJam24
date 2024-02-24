@@ -4,10 +4,14 @@ class_name Enemy2D extends CharacterBody2D
 
 ## Signals when hurting has stopped
 signal hurting_stopped
+## The enemies animated sprite 2D
+@export var animated_sprite: AnimatedSprite2D
 ## The maximum amount of health the enemy can have
 @export var max_health: int = 10
 ## The amount of damage the enemy deals
 @export var damage: int = 1
+## The speed of the enemy
+@export var speed: int = 5
 ## The time inbetween attacks
 @export var attack_cooldown_start_time: int = 2
 ## The health object
@@ -24,7 +28,11 @@ var _virtual_position: Vector2
 var _attack_cooldown: float = 0.0
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if active:
+		_physics()
+		_animation()
+	
 	if !Global.frozen and active:
 		_attack_cooldown -= delta
 		if _attack_cooldown <= 0 and contains_player:
@@ -88,3 +96,35 @@ func _set_hurting(new_value):
 	hurting = new_value
 	if !hurting:
 		hurting_stopped.emit()
+
+
+func _physics():
+	if !player or Global.frozen:
+		return
+	var angle = global_position.angle_to_point(player.global_position)
+	if hurting:
+		velocity = Vector2(cos(angle), sin(angle))
+		velocity = velocity * -40
+	else:
+		velocity = Vector2(cos(angle), sin(angle))
+		velocity = velocity * speed
+	fixed_move_and_slide()
+
+
+func _animation():
+	if Global.frozen:
+		animated_sprite.pause()
+	else:
+		if hurting:
+			if animated_sprite.animation != "hurt":
+				animated_sprite.play("hurt")
+			if !animated_sprite.is_playing():
+				animated_sprite.play()
+			if animated_sprite.frame == 3:
+				hurting = false
+		else:
+			if animated_sprite.animation != "moving":
+				animated_sprite.play("moving")
+			if !animated_sprite.is_playing():
+				animated_sprite.play()
+			sprite_flipping(animated_sprite)

@@ -6,14 +6,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_jn5f7"]
 radius = 4.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mm5du"]
-atlas = ExtResource("1_5fqbk")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5hkn7"]
-atlas = ExtResource("1_5fqbk")
-region = Rect2(16, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_kiarx"]
 atlas = ExtResource("1_5fqbk")
 region = Rect2(0, 16, 16, 16)
@@ -26,19 +18,16 @@ region = Rect2(16, 16, 16, 16)
 atlas = ExtResource("1_5fqbk")
 region = Rect2(32, 16, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm5du"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hkn7"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(16, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_0hro4"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_mm5du")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5hkn7")
-}],
-"loop": true,
-"name": &"flying",
-"speed": 7.5
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kiarx")
@@ -55,22 +44,34 @@ animations = [{
 "loop": false,
 "name": &"hurt",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm5du")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hkn7")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 7.5
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_awts0"]
 radius = 4.0
 
-[node name="Flyingskull" type="CharacterBody2D"]
+[node name="Flyingskull" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_lt7fx")
+animated_sprite = NodePath("Flyingskull")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jn5f7")
 
 [node name="Flyingskull" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0hro4")
-animation = &"hurt"
+animation = &"moving"
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 

@@ -13,7 +13,7 @@ func _ready():
 	_rng.randomize()
 	#new_enemy("bat")
 	for i in 1:
-		new_enemy("Yeti")
+		new_enemy("FlyingSkull")
 		await get_tree().create_timer(5).timeout
 
 
