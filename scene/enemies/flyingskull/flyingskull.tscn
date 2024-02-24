@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ge07ame8l2oj"]
+[gd_scene load_steps=11 format=3 uid="uid://ge07ame8l2oj"]
 
 [ext_resource type="Texture2D" uid="uid://dt6d734t2j13i" path="res://assets/img/enemies/flying_skull.png" id="1_5fqbk"]
 [ext_resource type="Script" path="res://scene/enemies/flyingskull/flyingskull.gd" id="1_lt7fx"]
@@ -57,6 +57,9 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_awts0"]
+radius = 4.0
+
 [node name="Flyingskull" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
@@ -68,3 +71,11 @@ shape = SubResource("CircleShape2D_jn5f7")
 [node name="Flyingskull" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0hro4")
 animation = &"hurt"
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_awts0")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
