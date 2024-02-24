@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://lo3sgy0u3sii" path="res://assets/img/tilesets/snow_cliff.png" id="3_lbeq8"]
 [ext_resource type="Texture2D" uid="uid://dsf8okjtvgivm" path="res://assets/img/tilesets/nature.png" id="4_il6hn"]
 [ext_resource type="Script" path="res://scene/game/Spawner.gd" id="7_et3kj"]
-[ext_resource type="PackedScene" uid="uid://5kv27ewaf3f6" path="res://scene/weapons/snowball/snowball.tscn" id="10_by6pd"]
+[ext_resource type="PackedScene" uid="uid://cdnmlw77gkb5n" path="res://scene/weapons/hotgrounds/hotgrounds.tscn" id="10_6pu2b"]
 [ext_resource type="PackedScene" uid="uid://bhcy5fgbb6s73" path="res://scene/UI/In-Game/in_game_ui.tscn" id="10_dhnfl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysga3"]
@@ -173,5 +173,5 @@ player = NodePath("../Player")
 
 [node name="In-Game UI" parent="UICanvasLayer" instance=ExtResource("10_dhnfl")]
 
-[node name="Snowball" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_by6pd")]
+[node name="Hotgrounds" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_6pu2b")]
 player = NodePath("../Player")

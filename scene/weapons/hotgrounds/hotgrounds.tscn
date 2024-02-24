@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://cdnmlw77gkb5n"]
+
+[ext_resource type="Script" path="res://scene/weapons/hotgrounds/hotgrounds.gd" id="1_a8e4p"]
+[ext_resource type="Texture2D" uid="uid://cv3fm4n84jls7" path="res://assets/img/weapons/hot_ground.png" id="2_0bdkg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inp5o"]
+atlas = ExtResource("2_0bdkg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkrip"]
+atlas = ExtResource("2_0bdkg")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfcfh"]
+atlas = ExtResource("2_0bdkg")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqavo"]
+atlas = ExtResource("2_0bdkg")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_13fbb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inp5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfcfh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqavo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4glsk"]
+radius = 14.0
+
+[node name="Hotgrounds" type="Node2D"]
+script = ExtResource("1_a8e4p")
+base_damage = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_13fbb")
+frame_progress = 0.715881
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_4glsk")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

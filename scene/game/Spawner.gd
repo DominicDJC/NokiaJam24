@@ -2,19 +2,19 @@ extends Node2D
 
 @export var player: CharacterBody2D
 var _rng = RandomNumberGenerator.new()
-@onready var enemy = preload("res://scene/enemy/enemy.tscn")
+const BAT = preload("res://scene/enemies/bat/bat.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_rng.randomize()
 	#new_enemy("bat")
-	for i in 20:
+	for i in 1:
 		await get_tree().create_timer(5).timeout
 		new_enemy("bat")
 
 
 func new_enemy(type: String):
-	var target: CharacterBody2D
+	var target: Enemy2D
 	for child in get_children():
 		if !child.active:
 			print("Reusing")
@@ -22,8 +22,8 @@ func new_enemy(type: String):
 			break
 	if !target:
 		print("Fresh")
-		target = enemy.instantiate()
-	target.init(player, type, _get_spawn_position())
+		target = BAT.instantiate()
+	target.init(player, _get_spawn_position())
 	add_child(target)
 
 

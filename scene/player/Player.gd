@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 
 @onready var _player_sprite = $PlayerSprite
 
-var health = Health.new()
+var health = Health.new(0, 20)
 var moving = false
 var saved_rotation_vector: Vector2 = Vector2(1, 0)
 var _virtual_position = Vector2(0.0, 0.0)

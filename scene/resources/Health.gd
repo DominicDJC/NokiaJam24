@@ -11,10 +11,10 @@ var _max_health = 100.0
 var _health = 100.0
 
 
-func _init(new_min_health: float = 0, new_max_health: float = 100, new_health: float = 100):
+func _init(new_min_health: float = 0, new_max_health: float = 20):
 	set_max_health(new_max_health)
 	_set_min_health(new_min_health)
-	_set_health(new_health)
+	_set_health(new_max_health)
 
 
 # Public methods

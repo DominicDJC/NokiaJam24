@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmkuuqfq6fs0t"]
+
+[ext_resource type="Script" path="res://scene/weapons/iceaxe/iceaxe.gd" id="1_ll1p3"]
+[ext_resource type="Texture2D" uid="uid://8kwmrjwo3xog" path="res://assets/img/weapons/iceaxe.png" id="2_01opm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn4c8"]
+atlas = ExtResource("2_01opm")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wigki"]
+atlas = ExtResource("2_01opm")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2css"]
+atlas = ExtResource("2_01opm")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhsqf"]
+atlas = ExtResource("2_01opm")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8q5k"]
+atlas = ExtResource("2_01opm")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kje3i"]
+atlas = ExtResource("2_01opm")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tefm2"]
+atlas = ExtResource("2_01opm")
+region = Rect2(48, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shmc2"]
+atlas = ExtResource("2_01opm")
+region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ghk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn4c8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wigki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2css")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhsqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8q5k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kje3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tefm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shmc2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhanx"]
+radius = 5.0
+
+[node name="Iceaxe" type="Node2D"]
+script = ExtResource("1_ll1p3")
+base_damage = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3ghk0")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_bhanx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
