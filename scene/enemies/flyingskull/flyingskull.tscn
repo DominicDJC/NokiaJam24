@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://ge07ame8l2oj"]
+
+[ext_resource type="Texture2D" uid="uid://dt6d734t2j13i" path="res://assets/img/enemies/flying_skull.png" id="1_5fqbk"]
+[ext_resource type="Script" path="res://scene/enemies/flyingskull/flyingskull.gd" id="1_lt7fx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jn5f7"]
+radius = 4.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm5du"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hkn7"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiarx"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkp5u"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nioti"]
+atlas = ExtResource("1_5fqbk")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0hro4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm5du")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hkn7")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 7.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiarx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkp5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nioti")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}]
+
+[node name="Flyingskull" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_lt7fx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jn5f7")
+
+[node name="Flyingskull" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0hro4")
+animation = &"hurt"

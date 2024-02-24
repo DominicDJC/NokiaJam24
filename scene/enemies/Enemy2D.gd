@@ -25,7 +25,7 @@ var _attack_cooldown: float = 0.0
 
 
 func _process(delta: float) -> void:
-	if !Global.frozen:
+	if !Global.frozen and active:
 		_attack_cooldown -= delta
 		if _attack_cooldown <= 0 and contains_player:
 			player.hurt(damage)
@@ -59,6 +59,7 @@ func kill():
 ## Activates the enemy
 func activate():
 	health = Health.new(0, max_health)
+	_attack_cooldown = attack_cooldown_start_time
 	active = true
 	visible = true
 

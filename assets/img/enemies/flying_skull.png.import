@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e8mwe8014ncl"
-path="res://.godot/imported/slime.png-d58744306c428c64f481d2b0133edd5f.ctex"
+uid="uid://dt6d734t2j13i"
+path="res://.godot/imported/flying_skull.png-1faeb2a52ea842681b8b8e01eeb68b5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/enemies/slime.png"
-dest_files=["res://.godot/imported/slime.png-d58744306c428c64f481d2b0133edd5f.ctex"]
+source_file="res://assets/img/enemies/flying_skull.png"
+dest_files=["res://.godot/imported/flying_skull.png-1faeb2a52ea842681b8b8e01eeb68b5f.ctex"]
 
 [params]
 

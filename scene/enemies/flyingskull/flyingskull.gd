@@ -1,15 +1,15 @@
-class_name Bat extends Enemy2D
+class_name FlyingSkull extends Enemy2D
 
 @export var speed = 5
-@onready var _bat = $Bat
+@onready var _flyingskull = $Flyingskull
 
 func _physics_process(delta: float) -> void:
 	if active:
-		_bat_physics()
-		_bat_animation()
+		_flyingskull_physics()
+		_flyingskull_animation()
 
 
-func _bat_physics():
+func _flyingskull_physics():
 	if !player or Global.frozen:
 		return
 	var angle = global_position.angle_to_point(player.global_position)
@@ -22,23 +22,23 @@ func _bat_physics():
 	fixed_move_and_slide()
 
 
-func _bat_animation():
+func _flyingskull_animation():
 	if Global.frozen:
-		_bat.pause()
+		_flyingskull.pause()
 	else:
 		if hurting:
-			if _bat.animation != "hurt":
-				_bat.play("hurt")
-			if !_bat.is_playing():
-				_bat.play()
-			if _bat.frame == 3:
+			if _flyingskull.animation != "hurt":
+				_flyingskull.play("hurt")
+			if !_flyingskull.is_playing():
+				_flyingskull.play()
+			if _flyingskull.frame == 3:
 				hurting = false
 		else:
-			if _bat.animation != "flying":
-				_bat.play("flying")
-			if !_bat.is_playing():
-				_bat.play()
-			sprite_flipping(_bat)
+			if _flyingskull.animation != "flying":
+				_flyingskull.play("flying")
+			if !_flyingskull.is_playing():
+				_flyingskull.play()
+			sprite_flipping(_flyingskull)
 
 
 func _on_attack_area_2d_body_entered(body: Node2D) -> void:

@@ -62,10 +62,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_60auj")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 7.5
+"speed": 15.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bqiq"]
@@ -82,7 +85,7 @@ shape = SubResource("CircleShape2D_50bla")
 
 [node name="Bat" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_6i6op")
-animation = &"flying"
+animation = &"hurt"
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 
