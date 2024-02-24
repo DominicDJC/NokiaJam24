@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://duy002is242ao" path="res://assets/img/UI/TitleScreen/logo/lofo_time7.png" id="18_48c01"]
 [ext_resource type="Texture2D" uid="uid://balrhttu2v2jw" path="res://assets/img/UI/TitleScreen/logo/lofo_time8.png" id="19_o3237"]
 [ext_resource type="Texture2D" uid="uid://lg70b8gfpn6q" path="res://assets/img/UI/TitleScreen/logo/start_game1.png" id="19_t6j8k"]
+[ext_resource type="Animation" uid="uid://cxvhdrpq8unh2" path="res://assets/img/UI/transition.res" id="19_uond1"]
 [ext_resource type="Texture2D" uid="uid://c5v2ewg3asca2" path="res://assets/img/UI/TitleScreen/logo/start_game2.png" id="20_5umkm"]
 [ext_resource type="Texture2D" uid="uid://dgo31yfjycsb4" path="res://assets/img/UI/TitleScreen/transition.png" id="29_6uiu4"]
 
@@ -199,76 +200,11 @@ tracks/4/keys = {
 "values": [Rect2(0, 48, 84, 48)]
 }
 
-[sub_resource type="Animation" id="Animation_00eto"]
-resource_name = "transition"
-length = 1.2
-step = 0.15
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Intro/Moon:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 51)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Intro/Character:position")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 85)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Intro/Logo:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Intro/StartGame:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Transition:texture:region")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(0, 48, 84, 48), Rect2(0, 96, 84, 48), Rect2(0, 144, 84, 48), Rect2(0, 192, 84, 48), Rect2(0, 240, 84, 48), Rect2(0, 288, 84, 48), Rect2(0, 336, 84, 48), Rect2(0, 384, 84, 48)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tvbjk"]
 _data = {
 "RESET": SubResource("Animation_lr35h"),
 "intro": SubResource("Animation_m6vvi"),
-"transition": SubResource("Animation_00eto")
+"transition": ExtResource("19_uond1")
 }
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_fugai"]

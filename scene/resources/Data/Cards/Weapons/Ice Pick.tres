@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_q1cix")
 name = "Ice Pick"
-description = "Enter ice pick description"
+description = "Attack with Ice Pick in facing direction"
 card_texture = ExtResource("1_swoyr")
 type = "weapon"
 weapon = "icepick"

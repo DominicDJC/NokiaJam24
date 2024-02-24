@@ -1,5 +1,8 @@
 extends Node
 
+# Starting card
+var snowball = preload("res://scene/resources/Data/Cards/Weapons/Snowball.tres")
+
 ## Whether or not time is frozen
 var frozen: bool = true
 ## The 1st card equipped
@@ -9,11 +12,27 @@ var equipcard2: Card
 ## The 3rd card equipped
 var equipcard3: Card
 ## The inventory. Should only contain [Card]s
-var inventory: Array = []
+var inventory: Array = [snowball]
 ## The kill count
 var kills: int = 0
 ## The time elapsed
 var time_elapsed: float = 0
+
+# TEMP
+func _ready():
+	inventory = [
+		snowball,
+		load("res://scene/resources/Data/Cards/Buffs/Attack.tres"),
+		load("res://scene/resources/Data/Cards/Buffs/Defense.tres"),
+		load("res://scene/resources/Data/Cards/Buffs/Health.tres"),
+		load("res://scene/resources/Data/Cards/Buffs/Speed.tres"),
+		load("res://scene/resources/Data/Cards/Buffs/Time.tres"),
+		load("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres"),
+		load("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres"),
+		load("res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres")
+	]
+
+
 
 ## Changes frozen to true
 func freeze():
@@ -53,7 +72,7 @@ func set_equipped(new_equipment: Array):
 	if new_equipment.size() != 3:
 		return
 	for item in new_equipment:
-		if !(item is Card):
+		if item and !(item is Card):
 			return
 	set_equipcard1(new_equipment[0])
 	set_equipcard2(new_equipment[1])

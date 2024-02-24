@@ -22,12 +22,12 @@ func _close_menus() -> void:
 	equipment_menu.set_visible(false)
 	close_menu.emit()
 
-func _open_card_menu(card):
+func _open_card_menu(equipment_index):
 	equipment_menu.set_visible(false)
 	card_pick_menu.set_visible(true)
-	card_pick_menu.open_menu()
+	card_pick_menu.open_menu(equipment_index)
 
-func _equip_card():
+func _equip_card(equipment_index):
 	equipment_menu.set_visible(true)
 	card_pick_menu.set_visible(false)
-	equipment_menu.open_menu()
+	equipment_menu.open_menu(equipment_index)
