@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_r7l3f")
 name = "Hot Grounds"
-description = "Enter hot grounds description"
+description = "ground area that inflict continous damage. "
 card_texture = ExtResource("1_0051y")
 type = "weapon"
 weapon = "hotgrounds"

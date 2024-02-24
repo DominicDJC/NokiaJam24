@@ -165,7 +165,13 @@ theme_override_font_sizes/font_size = 6
 text = "ground area that inflict continous damage."
 autowrap_mode = 3
 
-[node name="PrimaryTarget" type="Label" parent="CardInfos"]
+[node name="PrimaryTargets" type="Control" parent="CardInfos"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CardInfos/PrimaryTargets"]
+layout_mode = 0
 offset_top = 24.0
 offset_right = 40.0
 offset_bottom = 50.0
@@ -177,25 +183,25 @@ text = "
 P. targets"
 autowrap_mode = 3
 
-[node name="EnemyIcon1" type="TextureRect" parent="CardInfos"]
+[node name="EnemyIcon1" type="TextureRect" parent="CardInfos/PrimaryTargets"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_top = 37.0
 offset_right = 9.0
-offset_bottom = -2.0
+offset_bottom = 6.0
 grow_vertical = 2
 texture = ExtResource("5_8wiuh")
 stretch_mode = 5
 
-[node name="EnemyIcon2" type="TextureRect" parent="CardInfos"]
+[node name="EnemyIcon2" type="TextureRect" parent="CardInfos/PrimaryTargets"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 11.0
 offset_top = 37.0
 offset_right = 20.0
-offset_bottom = -2.0
+offset_bottom = 6.0
 grow_vertical = 2
 texture = ExtResource("6_tsf3n")
 stretch_mode = 5

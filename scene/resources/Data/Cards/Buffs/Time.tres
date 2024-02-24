@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_i5uir")
 name = "Slow Time"
-description = "Time stays frozen for a short period of time after you move"
+description = "Freeze time for a short period of time"
 card_texture = ExtResource("1_jdvwj")
 type = "buff"
 weapon = ""

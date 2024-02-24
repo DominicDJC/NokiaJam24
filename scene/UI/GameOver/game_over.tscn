@@ -1,4 +1,77 @@
-[gd_scene format=3 uid="uid://rb7f745yd555"]
+[gd_scene load_steps=17 format=3 uid="uid://rb7f745yd555"]
+
+[ext_resource type="Texture2D" uid="uid://bmnc7rokelj5j" path="res://assets/img/UI/GameOver/game_over_screen.png" id="1_retd4"]
+[ext_resource type="Texture2D" uid="uid://yjn6tyko0ve7" path="res://assets/img/UI/GameOver/game_over_logo.png" id="2_ath1m"]
+[ext_resource type="Texture2D" uid="uid://deycvp0imtsod" path="res://assets/img/UI/TitleScreen/snow/snow1.png" id="3_q7pp4"]
+[ext_resource type="Texture2D" uid="uid://c7jr6wvaqmbfj" path="res://assets/img/UI/TitleScreen/snow/snow2.png" id="4_np3l0"]
+[ext_resource type="Texture2D" uid="uid://bhania4rqamvd" path="res://assets/img/UI/TitleScreen/snow/snow3.png" id="5_ooh5f"]
+[ext_resource type="Texture2D" uid="uid://i2xnss0rm5p0" path="res://assets/img/UI/TitleScreen/snow/snow4.png" id="6_7mgtw"]
+[ext_resource type="Texture2D" uid="uid://b6kl1kary35cq" path="res://assets/img/UI/TitleScreen/snow/snow5.png" id="7_ti0xh"]
+[ext_resource type="Texture2D" uid="uid://dsaksmklor4g8" path="res://assets/img/UI/TitleScreen/snow/snow6.png" id="8_vm48q"]
+[ext_resource type="Texture2D" uid="uid://cow7isyh03gso" path="res://assets/img/UI/TitleScreen/snow/snow7.png" id="9_y67xk"]
+[ext_resource type="Texture2D" uid="uid://bvwojjb5aghqp" path="res://assets/img/UI/TitleScreen/snow/snow8.png" id="10_h5g2l"]
+[ext_resource type="Texture2D" uid="uid://dgo31yfjycsb4" path="res://assets/img/UI/TitleScreen/transition.png" id="11_1u6be"]
+
+[sub_resource type="Animation" id="Animation_sr3tk"]
+resource_name = "transition"
+length = 1.1
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Transition:texture:region")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(0, 384, 84, 48), Rect2(0, 336, 84, 48), Rect2(0, 288, 84, 48), Rect2(0, 240, 84, 48), Rect2(0, 192, 84, 48), Rect2(0, 144, 84, 48), Rect2(0, 96, 84, 48), Rect2(0, 48, 84, 48)]
+}
+
+[sub_resource type="Animation" id="Animation_0br8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Transition:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 384, 84, 48)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p225u"]
+_data = {
+"RESET": SubResource("Animation_0br8x"),
+"transition": SubResource("Animation_sr3tk")
+}
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_cvfuh"]
+frames = 8
+speed_scale = 10.0
+frame_0/texture = ExtResource("3_q7pp4")
+frame_1/texture = ExtResource("4_np3l0")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("5_ooh5f")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("6_7mgtw")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("7_ti0xh")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("8_vm48q")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("9_y67xk")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("10_h5g2l")
+frame_7/duration = 1.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn65i"]
+atlas = ExtResource("11_1u6be")
+region = Rect2(0, 384, 84, 48)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -8,8 +81,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="test" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 10.0
-text = "gameover"
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.262745, 0.321569, 0.239216, 1)
+
+[node name="Outro" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="GameOverBackground" type="TextureRect" parent="Outro"]
+layout_mode = 1
+offset_right = 84.0
+offset_bottom = 48.0001
+texture = ExtResource("1_retd4")
+stretch_mode = 2
+
+[node name="Logo" type="Control" parent="Outro"]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 8.0
+offset_right = 7.0
+offset_bottom = 8.0
+
+[node name="LogoFreezin" type="TextureRect" parent="Outro/Logo"]
+layout_mode = 1
+offset_right = 69.0
+offset_bottom = 21.0
+texture = ExtResource("2_ath1m")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Outro"]
+libraries = {
+"": SubResource("AnimationLibrary_p225u")
+}
+autoplay = "transition"
+
+[node name="Snow" type="TextureRect" parent="."]
+offset_right = 84.0
+offset_bottom = 48.0
+texture = SubResource("AnimatedTexture_cvfuh")
+stretch_mode = 2
+
+[node name="Transition" type="TextureRect" parent="."]
+offset_right = 84.0
+offset_bottom = 48.0
+texture = SubResource("AtlasTexture_dn65i")
+stretch_mode = 2

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_83o0e")
 name = "Ice Axe"
-description = "Enter ice axe description"
+description = "Overhead attack with your Ice Axe"
 card_texture = ExtResource("1_fa2ls")
 type = "weapon"
 weapon = "iceaxe"
