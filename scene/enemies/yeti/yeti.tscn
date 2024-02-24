@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://crd34hqstjxui"]
+
+[ext_resource type="Script" path="res://scene/enemies/yeti/yeti.gd" id="1_xj1g1"]
+[ext_resource type="Texture2D" uid="uid://bvwistgotraj8" path="res://assets/img/enemies/zombie.png" id="2_wf673"]
+[ext_resource type="Texture2D" uid="uid://dyhi0k73j4qq2" path="res://assets/img/enemies/yeti.png" id="3_eospj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkpgv"]
+atlas = ExtResource("2_wf673")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37mjv"]
+atlas = ExtResource("2_wf673")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uk0id"]
+atlas = ExtResource("2_wf673")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2duqd"]
+atlas = ExtResource("3_eospj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mww51"]
+atlas = ExtResource("3_eospj")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf2ba"]
+atlas = ExtResource("3_eospj")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_786x6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkpgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37mjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uk0id")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2duqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mww51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf2ba")
+}],
+"loop": true,
+"name": &"running",
+"speed": 7.5
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfd77"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_td8pf"]
+radius = 4.0
+
+[node name="Yeti" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_xj1g1")
+
+[node name="Yeti" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_786x6")
+animation = &"running"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CapsuleShape2D_lfd77")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_td8pf")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]
