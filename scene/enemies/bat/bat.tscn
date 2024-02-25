@@ -74,11 +74,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bqiq"]
 radius = 4.0
 
-[node name="Bat" type="CharacterBody2D"]
-visible = false
+[node name="Bat" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_j2rea")
+animated_sprite = NodePath("Bat")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_50bla")

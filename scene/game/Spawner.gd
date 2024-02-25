@@ -7,13 +7,17 @@ const BAT = preload("res://scene/enemies/bat/bat.tscn")
 const FLYINGSKULL = preload("res://scene/enemies/flyingskull/flyingskull.tscn")
 const ZOMBIE = preload("res://scene/enemies/zombie/zombie.tscn")
 const YETI = preload("res://scene/enemies/yeti/yeti.tscn")
+const SNAKE = preload("res://scene/enemies/snake/snake.tscn")
+const WOLF = preload("res://scene/enemies/wolf/wolf.tscn")
+const SLIME = preload("res://scene/enemies/slime/slime.tscn")
+const SNOWMAN = preload("res://scene/enemies/snowman/snowman.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_rng.randomize()
 	#new_enemy("bat")
 	for i in 1:
-		new_enemy("FlyingSkull")
+		new_enemy("Snowman")
 		await get_tree().create_timer(5).timeout
 
 
@@ -35,6 +39,14 @@ func new_enemy(type: String):
 				target = ZOMBIE.instantiate()
 			"Yeti":
 				target = YETI.instantiate()
+			"Snake":
+				target = SNAKE.instantiate()
+			"Wolf":
+				target = WOLF.instantiate()
+			"Slime":
+				target = SLIME.instantiate()
+			"Snowman":
+				target = SNOWMAN.instantiate()
 	target.init(player, _get_spawn_position())
 	add_child(target)
 

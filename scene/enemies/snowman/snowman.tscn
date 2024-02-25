@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://cg2p0qnb7qapk"]
+
+[ext_resource type="Script" path="res://scene/enemies/snowman/snowman.gd" id="1_7gwp1"]
+[ext_resource type="Texture2D" uid="uid://seeym754nxxc" path="res://assets/img/enemies/snowman.png" id="2_p881d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s6i3"]
+atlas = ExtResource("2_p881d")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ny81"]
+atlas = ExtResource("2_p881d")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbte6"]
+atlas = ExtResource("2_p881d")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4trc"]
+atlas = ExtResource("2_p881d")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72081"]
+atlas = ExtResource("2_p881d")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy7vb"]
+atlas = ExtResource("2_p881d")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yxghq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0s6i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ny81")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbte6")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4trc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72081")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy7vb")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hnciq"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qprjt"]
+radius = 7.0
+
+[node name="Snowman" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_7gwp1")
+animated_sprite = NodePath("Snowman")
+max_health = 20
+
+[node name="Snowman" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_yxghq")
+animation = &"moving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hnciq")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_qprjt")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]

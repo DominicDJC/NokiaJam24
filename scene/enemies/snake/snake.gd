@@ -1,4 +1,4 @@
-class_name Zombie extends Enemy2D
+class_name Snake extends Enemy2D
 
 
 func _on_attack_area_2d_body_entered(body: Node2D) -> void:

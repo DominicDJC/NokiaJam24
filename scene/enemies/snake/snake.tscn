@@ -1,0 +1,83 @@
+[gd_scene load_steps=11 format=3 uid="uid://bd5agykyj2jme"]
+
+[ext_resource type="Script" path="res://scene/enemies/snake/snake.gd" id="1_pupg7"]
+[ext_resource type="Texture2D" uid="uid://b1xf3risyp7cv" path="res://assets/img/enemies/snake.png" id="2_1305a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7ugp"]
+atlas = ExtResource("2_1305a")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lqbp"]
+atlas = ExtResource("2_1305a")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed5l3"]
+atlas = ExtResource("2_1305a")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oklt6"]
+atlas = ExtResource("2_1305a")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkd0b"]
+atlas = ExtResource("2_1305a")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tjf7h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7ugp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lqbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ed5l3")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oklt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkd0b")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 7.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vsm1"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0dlir"]
+radius = 5.0
+
+[node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_pupg7")
+animated_sprite = NodePath("Snake")
+
+[node name="Snake" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tjf7h")
+animation = &"hurt"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6vsm1")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_0dlir")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]

@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7cicn7t7i4it"]
+
+[ext_resource type="Script" path="res://scene/enemies/slime/slime.gd" id="1_iit2u"]
+[ext_resource type="Texture2D" uid="uid://mmj6g6h5ikuw" path="res://assets/img/enemies/slime.png" id="2_4gru5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iidhj"]
+atlas = ExtResource("2_4gru5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he5u3"]
+atlas = ExtResource("2_4gru5")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvehy"]
+atlas = ExtResource("2_4gru5")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr6jh"]
+atlas = ExtResource("2_4gru5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv2c1"]
+atlas = ExtResource("2_4gru5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pulcs"]
+atlas = ExtResource("2_4gru5")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwstf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iidhj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he5u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvehy")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr6jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv2c1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pulcs")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bry5r"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fb5vf"]
+radius = 7.0
+
+[node name="Slime" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+visible = false
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_iit2u")
+animated_sprite = NodePath("Slime")
+
+[node name="Slime" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_cwstf")
+animation = &"moving"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bry5r")
+
+[node name="AttackArea2D" type="Area2D" parent="."]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea2D"]
+shape = SubResource("CircleShape2D_fb5vf")
+
+[connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]
+[connection signal="body_exited" from="AttackArea2D" to="." method="_on_attack_area_2d_body_exited"]

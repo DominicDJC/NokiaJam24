@@ -61,17 +61,19 @@ animations = [{
 radius = 4.0
 
 [node name="Flyingskull" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
+visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_lt7fx")
 animated_sprite = NodePath("Flyingskull")
+max_health = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jn5f7")
 
 [node name="Flyingskull" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0hro4")
-animation = &"moving"
+animation = &"hurt"
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 
