@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 
 @export var speed = 15
+@export var ingameui: Control
 
 @onready var _player_sprite = $PlayerSprite
 
@@ -37,8 +38,6 @@ func _physics_process(delta):
 
 func hurt(damage):
 	_hurting = true
-	print("Incoming damage: " + str(damage))
-	print("Calculated damage: " + str(damage * ((4 - Global.buffs["defense"]) / 3.0)))
 	health.hurt(damage * ((4 - Global.buffs["defense"]) / 3.0))
 	print("Player health: " + str(health.get_health()))
 	if health.get_health() <= 0:
@@ -50,10 +49,11 @@ func kill():
 
 
 func _get_input():
-	var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
-	moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
-	velocity = input_direction * speed
-	_update_saved_rotation_vector(input_direction)
+	if !ingameui.in_menu:
+		var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
+		moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
+		velocity = input_direction * speed
+		_update_saved_rotation_vector(input_direction)
 
 
 func _update_player_sprite():

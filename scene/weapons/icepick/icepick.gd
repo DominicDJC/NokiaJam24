@@ -12,7 +12,7 @@ func _physics_process(delta: float) -> void:
 	
 	if !Global.frozen:
 		_cooldown -= delta
-		if _cooldown < 0:
+		if _cooldown <= 0:
 			_cooldown = 4.0
 			_start_attack()
 		
@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 			position += _velocity * delta
 			if player.position.distance_to(position) > 35:
 				_attacking = false
+				can_delete = true
 
 
 func _start_attack() -> void:
@@ -36,6 +37,7 @@ func _start_attack() -> void:
 			animated_sprite_2d.animation = "45"
 	animated_sprite_2d.play()
 	_attacking = true
+	can_delete = false
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:

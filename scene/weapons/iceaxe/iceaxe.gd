@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 			position += _velocity * delta
 			if _velocity.y > 120:
 				_attacking = false
+				can_delete = true
 		
 		_cooldown -= delta
 		if _cooldown < 0:
@@ -41,7 +42,8 @@ func _start_attack() -> void:
 	_velocity = Vector2(0, -5)
 	position = player.position + Vector2(0, -7)
 	_attacking = true
-	_acceleration = Vector2(0, -100)
+	can_delete = false
+	_acceleration = Vector2(_rng.randi_range(-10, 10), -100)
 	await get_tree().create_timer(.2).timeout
 	_acceleration.y = 100
 

@@ -2,6 +2,12 @@ extends Node2D
 
 @export var player: Player
 var _equipment: Array = []
+var _weapon_counts: Dictionary = {
+	"snowball":0,
+	"iceaxe":0,
+	"icepick":0,
+	"hotgrounds":null,
+}
 
 const HOTGROUNDS = preload("res://scene/weapons/hotgrounds/hotgrounds.tscn")
 const ICEAXE = preload("res://scene/weapons/iceaxe/iceaxe.tscn")
@@ -25,8 +31,13 @@ func _update_equipment() -> void:
 
 func _clear_weapons() -> void:
 	for child in get_children():
-		remove_child(child)
-		child.queue_free()
+		child.delete(self)
+	_weapon_counts = {
+		"snowball":0,
+		"iceaxe":0,
+		"icepick":0,
+		"hotgrounds":null,
+	}
 
 
 func _create_weapon(card: Card) -> void:
@@ -34,12 +45,23 @@ func _create_weapon(card: Card) -> void:
 	match card.weapon:
 		"snowball":
 			weapon = SNOWBALL.instantiate()
+			weapon._rotation_speed *= _weapon_counts["snowball"] + 1
 		"icepick":
 			weapon = ICEPICK.instantiate()
+			if _weapon_counts["icepick"] > 0:
+				weapon._cooldown -= _weapon_counts["icepick"] * 0.2
 		"iceaxe":
 			weapon = ICEAXE.instantiate()
+			if _weapon_counts["iceaxe"] > 0:
+				weapon._cooldown -= _weapon_counts["iceaxe"] * 0.4
 		"hotgrounds":
-			weapon = HOTGROUNDS.instantiate()
+			if !_weapon_counts["hotgrounds"]:
+				weapon = HOTGROUNDS.instantiate()
+				_weapon_counts["hotgrounds"] = weapon
+			else:
+				_weapon_counts["hotgrounds"].wait_time -= .3
 	if weapon:
+		if !card.weapon == "hotgrounds":
+			_weapon_counts[card.weapon] += 1
 		weapon.player = player
 		add_child(weapon)

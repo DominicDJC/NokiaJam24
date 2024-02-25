@@ -162,7 +162,8 @@ layer_0/tile_data = PackedInt32Array(458734, 0, 0, -589837, 0, 0, -786413, 0, 0,
 script = ExtResource("6_w7a12")
 player = NodePath("../Player")
 
-[node name="Player" parent="." instance=ExtResource("2_np5c5")]
+[node name="Player" parent="." node_paths=PackedStringArray("ingameui") instance=ExtResource("2_np5c5")]
+ingameui = NodePath("../UICanvasLayer/In-Game UI")
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_avj8l")
