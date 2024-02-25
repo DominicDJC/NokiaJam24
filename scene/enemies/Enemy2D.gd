@@ -9,7 +9,7 @@ signal hurting_stopped
 ## The maximum amount of health the enemy can have
 @export var max_health: int = 10
 ## The amount of damage the enemy deals
-@export var damage: int = 1
+@export var damage: int = 3
 ## The speed of the enemy
 @export var speed: int = 5
 ## The time inbetween attacks

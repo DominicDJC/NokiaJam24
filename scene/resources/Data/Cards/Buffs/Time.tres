@@ -15,5 +15,5 @@ effects = {
 "defense": 0,
 "health": 0,
 "speed": 0,
-"time": 5
+"time": 1
 }

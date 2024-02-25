@@ -74,6 +74,7 @@ collision_mask = 2
 script = ExtResource("1_tbois")
 animated_sprite = NodePath("Wolf")
 max_health = 20
+damage = 6
 
 [node name="Wolf" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -4)

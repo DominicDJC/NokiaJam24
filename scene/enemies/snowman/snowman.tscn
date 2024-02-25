@@ -74,6 +74,7 @@ collision_mask = 2
 script = ExtResource("1_7gwp1")
 animated_sprite = NodePath("Snowman")
 max_health = 20
+damage = 6
 
 [node name="Snowman" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)

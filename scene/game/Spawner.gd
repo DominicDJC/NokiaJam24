@@ -25,11 +25,9 @@ func new_enemy(type: String):
 	var target: Enemy2D
 	for child in get_children():
 		if child.is_class(type) and !child.active:
-			print("Reusing")
 			target = child
 			break
 	if !target:
-		print("Fresh")
 		match type:
 			"Bat":
 				target = BAT.instantiate()

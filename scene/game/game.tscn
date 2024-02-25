@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://scene/game/MainCamera.gd" id="3_avj8l"]
 [ext_resource type="Texture2D" uid="uid://lo3sgy0u3sii" path="res://assets/img/tilesets/snow_cliff.png" id="3_lbeq8"]
 [ext_resource type="Texture2D" uid="uid://dsf8okjtvgivm" path="res://assets/img/tilesets/nature.png" id="4_il6hn"]
+[ext_resource type="Script" path="res://scene/game/Loadout.gd" id="6_w7a12"]
 [ext_resource type="Script" path="res://scene/game/Spawner.gd" id="7_et3kj"]
 [ext_resource type="PackedScene" uid="uid://bhcy5fgbb6s73" path="res://scene/UI/In-Game/in_game_ui.tscn" id="10_dhnfl"]
-[ext_resource type="PackedScene" uid="uid://cy3dsopk7uass" path="res://scene/weapons/icepick/icepick.tscn" id="10_h64t5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysga3"]
 texture = ExtResource("1_jdasb")
@@ -158,6 +158,10 @@ rendering_quadrant_size = 8
 format = 2
 layer_0/tile_data = PackedInt32Array(458734, 0, 0, -589837, 0, 0, -786413, 0, 0, 458771, 0, 0, -524288, 0, 0, 327671, 65536, 0, -720881, 65536, 0, -851975, 65536, 0, -262164, 65536, 0, 131057, 0, 1, 196593, 0, 2, 65517, 0, 1, 131053, 0, 2, -65545, 0, 1, -9, 0, 2, 131088, 0, 1, 196624, 0, 2, -327658, 0, 1, -262122, 0, 2, -524278, 0, 1, -458742, 0, 2, -786433, 0, 1, -720897, 0, 2, -851985, 0, 1, -786449, 0, 2, -720898, 65536, 1, -655362, 65536, 2, -720900, 0, 1, -655364, 0, 2, -851971, 196608, 1, -786435, 196608, 2, -589812, 196608, 1, -524276, 196608, 2, 131085, 196608, 1, 196621, 196608, 2, 65522, 196608, 1, 131058, 196608, 2, 196587, 196608, 1, 262123, 196608, 2, -917523, 196608, 1, -851987, 196608, 2, -196588, 196608, 1, -131052, 196608, 2, -196585, 327680, 1, -131049, 327680, 2, -131050, 262144, 1, -65514, 262144, 2, -65553, 262144, 1, -17, 262144, 2, -524299, 327680, 1, -458763, 327680, 2, -589846, 196608, 1, -524310, 196608, 2, 393212, 0, 1, 458748, 0, 2, 524294, 0, 1, 589830, 0, 2, 458751, 65536, 1, 524287, 65536, 2, 327682, 131072, 1, 393218, 131072, 2, 327678, 196608, 1, 393214, 196608, 2, 524291, 262144, 1, 589827, 262144, 2, 327685, 327680, 1, 393221, 327680, 2, 720892, 0, 0, 655352, 0, 0, 720893, 65536, 0, 589819, 65536, 0, 655341, 0, 1, 720877, 0, 2)
 
+[node name="Loadout" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("6_w7a12")
+player = NodePath("../Player")
+
 [node name="Player" parent="." instance=ExtResource("2_np5c5")]
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
@@ -172,6 +176,3 @@ player = NodePath("../Player")
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="In-Game UI" parent="UICanvasLayer" instance=ExtResource("10_dhnfl")]
-
-[node name="Icepick" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_h64t5")]
-player = NodePath("../Player")

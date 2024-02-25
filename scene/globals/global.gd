@@ -17,6 +17,14 @@ var inventory: Array = [snowball]
 var kills: int = 0
 ## The time elapsed
 var time_elapsed: float = 0
+## All of the buffs
+var buffs: Dictionary = {
+	"health":0,
+	"damage":0,
+	"speed":0,
+	"defense":0,
+	"time":0,
+}
 
 # TEMP
 func _ready():
@@ -28,7 +36,7 @@ func _ready():
 		load("res://scene/resources/Data/Cards/Buffs/Speed.tres"),
 		load("res://scene/resources/Data/Cards/Buffs/Time.tres"),
 		load("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres"),
-		load("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres"),
+		load("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres"),
 		load("res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres")
 	]
 
@@ -121,3 +129,17 @@ func reset_time_elapsed():
 ## Gets the time elapsed
 func get_time_elapsed() -> float:
 	return time_elapsed
+
+
+func update_buffs():
+	buffs = {
+		"health":1,
+		"damage":1,
+		"speed":1,
+		"defense":1,
+		"time":1,
+	}
+	for card in get_equipped():
+		if card is Card and card != null:
+			for key in card.effects.keys():
+				buffs[key] += card.effects[key]

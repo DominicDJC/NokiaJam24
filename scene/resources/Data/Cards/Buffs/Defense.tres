@@ -12,7 +12,7 @@ type = "buff"
 weapon = ""
 effects = {
 "damage": 0,
-"defense": 5,
+"defense": 1,
 "health": 0,
 "speed": 0,
 "time": 0

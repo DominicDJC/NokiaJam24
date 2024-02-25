@@ -13,7 +13,7 @@ weapon = ""
 effects = {
 "damage": 0,
 "defense": 0,
-"health": 5,
-"speed": 0,
+"health": 0,
+"speed": 1,
 "time": 0
 }

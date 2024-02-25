@@ -19,7 +19,6 @@ func _physics_process(delta: float) -> void:
 		if _attacking:
 			position += _velocity * delta
 			if player.position.distance_to(position) > 35:
-				print('knife over')
 				_attacking = false
 
 
