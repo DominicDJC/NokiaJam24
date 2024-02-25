@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://n1uvfwr4mcn4"]
+[gd_scene load_steps=20 format=3 uid="uid://n1uvfwr4mcn4"]
 
 [ext_resource type="Script" path="res://scene/UI/In-Game/menus/card_pick_menu.gd" id="1_rp6rq"]
 [ext_resource type="Texture2D" uid="uid://cntn4ceqktdgt" path="res://assets/img/UI/In-Game/card_pick.png" id="2_qgj80"]
@@ -41,6 +41,60 @@ region = Rect2(4, 51, 7, 9)
 [sub_resource type="AtlasTexture" id="AtlasTexture_7m0n6"]
 atlas = ExtResource("2_qgj80")
 region = Rect2(36, 51, 7, 9)
+
+[sub_resource type="Animation" id="Animation_c15ny"]
+resource_name = "Right"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardPicker/Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(9, 4), Vector2(7, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_6fcdy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardPicker/Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_onxll"]
+resource_name = "Left"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardPicker/Card:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(5, 4), Vector2(7, 4)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_teaxc"]
+_data = {
+"Left": SubResource("Animation_onxll"),
+"RESET": SubResource("Animation_6fcdy"),
+"Right": SubResource("Animation_c15ny")
+}
 
 [node name="CardPickMenu" type="Control"]
 custom_minimum_size = Vector2(84, 48)
@@ -103,7 +157,7 @@ flip_h = true
 layout_mode = 0
 offset_left = 7.0
 offset_top = 4.0
-offset_right = 33.0
+offset_right = 33.0001
 offset_bottom = 38.0
 focus_neighbor_left = NodePath("../../ReturnToGameButton")
 focus_neighbor_right = NodePath("../Slot2")
@@ -205,3 +259,8 @@ offset_bottom = 6.0
 grow_vertical = 2
 texture = ExtResource("6_tsf3n")
 stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_teaxc")
+}

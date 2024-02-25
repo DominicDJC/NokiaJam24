@@ -2,6 +2,9 @@ extends Node2D
 
 @export var player: CharacterBody2D
 var _rng = RandomNumberGenerator.new()
+var _desired_enemy_count: int = 0
+var _max_cooldown: float = 2.5
+var _cooldown: float = 0.0
 
 const BAT = preload("res://scene/enemies/bat/bat.tscn")
 const FLYINGSKULL = preload("res://scene/enemies/flyingskull/flyingskull.tscn")
@@ -15,10 +18,17 @@ const SNOWMAN = preload("res://scene/enemies/snowman/snowman.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_rng.randomize()
-	#new_enemy("bat")
-	for i in 20:
-		new_enemy("Slime")
-		await get_tree().create_timer(2.5).timeout
+	#new_enemy("Bat")
+
+
+func _physics_process(delta: float) -> void:
+	if !Global.frozen:
+		# Start with 10, go up 1 every 30 secs
+		_desired_enemy_count = (Global.time_elapsed / 30) + 10
+		_cooldown -= delta
+		if _cooldown < 0 and _total_enemies() < _desired_enemy_count:
+			_cooldown = _max_cooldown
+			new_enemy(_pick_enemy())
 
 
 func new_enemy(type: String):
@@ -45,8 +55,30 @@ func new_enemy(type: String):
 				target = SLIME.instantiate()
 			"Snowman":
 				target = SNOWMAN.instantiate()
-	target.init(player, _get_spawn_position())
+	target.init(player)
 	add_child(target)
+
+
+func _pick_enemy() -> String:
+	var inventory_data: Dictionary = Global.card_counts
+	var time_elapsed: float = Global.time_elapsed
+	var diff_monsters: bool = 2 < (inventory_data["Attack Up"] + inventory_data["Shield Up"] + inventory_data["Health Up"])
+	var possible_enemies: Array = ["Bat"]
+	if diff_monsters:
+		possible_enemies.append("FlyingSkull")
+	if time_elapsed > 120 or inventory_data["Ice Pick"] > 0:
+		possible_enemies.append("Zombie")
+		if diff_monsters:
+			possible_enemies.append("Yeti")
+	if time_elapsed > 180 or inventory_data["Ice Axe"] > 0:
+		possible_enemies.append("Snake")
+		if diff_monsters:
+			possible_enemies.append("Wolf")
+	if time_elapsed > 240 or inventory_data["Hot Grounds"] > 0:
+		possible_enemies.append("Slime")
+		if diff_monsters:
+			possible_enemies.append("Snowman")
+	return possible_enemies[_rng.randi_range(0, possible_enemies.size() - 1)]
 
 
 func _print_enemies():
@@ -63,21 +95,9 @@ func _print_enemies():
 	print(string)
 
 
-func _get_spawn_position() -> Vector2:
-	var player_position = player.global_position
-	var spawn_position = Vector2(0, 0)
-	match _rng.randi_range(0, 3):
-		0: # above
-			spawn_position.x = player_position.x + _rng.randi_range(-60, 60)
-			spawn_position.y = player_position.y + 40
-		1: # below
-			spawn_position.x = player_position.x + _rng.randi_range(-60, 60)
-			spawn_position.y = player_position.y - 40
-		2: # right
-			spawn_position.x = player_position.x + 60
-			spawn_position.y = player_position.y + _rng.randi_range(-40, 40)
-		3: # left
-			spawn_position.x = player_position.x - 60
-			spawn_position.y = player_position.y + _rng.randi_range(-40, 40)
-	return spawn_position
-
+func _total_enemies() -> int:
+	var count: int = 0
+	for child in get_children():
+		if child.active:
+			count += 1
+	return count

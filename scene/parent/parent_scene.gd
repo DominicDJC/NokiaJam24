@@ -6,8 +6,7 @@ extends Node
 
 
 func _ready():
-	#_load_main_menu()
-	_load_game()
+	_load_main_menu()
 
 # We can remove this when we don't need it anymore. This will play the game
 #func _process(delta):

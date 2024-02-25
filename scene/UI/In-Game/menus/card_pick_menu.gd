@@ -14,6 +14,8 @@ var inventory = []
 @onready var ptarget_section = $CardInfos/PrimaryTargets
 @onready var ptarget1 = $CardInfos/PrimaryTargets/EnemyIcon1
 @onready var ptarget2 = $CardInfos/PrimaryTargets/EnemyIcon2
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+
 
 func open_menu(equipment_index):
 	e_index = equipment_index
@@ -32,6 +34,7 @@ func open_menu(equipment_index):
 
 
 func _initialize_card_list():
+	scrolling_cards.clear()
 	# initialize list of possible card (do not show already equiped)
 	for card in inventory:
 		scrolling_cards.append(card)
@@ -74,12 +77,16 @@ func _set_current_card():
 		ptarget2.texture = enemies[1].icon_texture
 		
 func _next_card():
+	animation_player.stop()
+	animation_player.play("Right")
 	current_card_index += 1
 	if current_card_index >= len(scrolling_cards):
 		current_card_index = 0
 	_set_current_card()
 	
 func _prev_card():
+	animation_player.stop()
+	animation_player.play("Left")
 	current_card_index -= 1
 	if current_card_index < 0:
 		current_card_index = len(scrolling_cards) - 1

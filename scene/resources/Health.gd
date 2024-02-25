@@ -50,6 +50,8 @@ func heal(amount):
 
 func set_max_health(new_max_health):
 	_max_health = new_max_health
+	if get_health() > _max_health:
+		_set_health(_max_health)
 
 
 # Private methods

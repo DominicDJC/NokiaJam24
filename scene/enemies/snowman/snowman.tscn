@@ -65,19 +65,20 @@ animations = [{
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qprjt"]
-radius = 7.0
+radius = 4.0
 
 [node name="Snowman" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite")]
 visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7gwp1")
+type = "Snowman"
 animated_sprite = NodePath("Snowman")
 max_health = 20
 damage = 6
 
 [node name="Snowman" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_yxghq")
 animation = &"moving"
 

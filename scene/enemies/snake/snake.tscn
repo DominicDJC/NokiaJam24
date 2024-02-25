@@ -65,6 +65,7 @@ visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_pupg7")
+type = "Snake"
 animated_sprite = NodePath("Snake")
 
 [node name="Snake" type="AnimatedSprite2D" parent="."]

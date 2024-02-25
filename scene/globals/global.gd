@@ -19,6 +19,8 @@ var inventory: Array = []
 var kills: int = 0
 ## The time elapsed
 var time_elapsed: float = 0
+## Kills since the last card
+var kills_since_card: int = 0
 ## All of the buffs
 var buffs: Dictionary = {
 	"health":0,
@@ -27,12 +29,13 @@ var buffs: Dictionary = {
 	"defense":0,
 	"time":0,
 }
+## The card counts
 var card_counts: Dictionary = {
 	"Attack Up": 0,
 	"Shield Up": 0,
 	"Health Up": 0,
 	"Speed Up": 0,
-	"Slow Time": 0,
+	#"Slow Time": 0,
 	"Hot Grounds": 0,
 	"Ice Axe": 0,
 	"Ice Pick": 0,
@@ -59,22 +62,6 @@ const cards: Dictionary = {
 	"Ice Pick": preload("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres"),
 	"Snowball": preload("res://scene/resources/Data/Cards/Weapons/Snowball.tres"),
 }
-
-
-# TEMP
-#func _ready():
-	#inventory = [
-		#snowball,
-		#load("res://scene/resources/Data/Cards/Buffs/Attack.tres"),
-		#load("res://scene/resources/Data/Cards/Buffs/Defense.tres"),
-		#load("res://scene/resources/Data/Cards/Buffs/Health.tres"),
-		#load("res://scene/resources/Data/Cards/Buffs/Speed.tres"),
-		#load("res://scene/resources/Data/Cards/Buffs/Time.tres"),
-		#load("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres"),
-		#load("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres"),
-		#load("res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres")
-	#]
-
 
 
 ## Changes frozen to true
@@ -132,7 +119,6 @@ func add_to_inventory(new_card: Card):
 
 ## Remove a card from the inventory array via card
 func remove_from_inventory_by_card(card: Card):
-	print("removing item from inventory 1")
 	if inventory.has(card):
 		inventory.erase(card)
 		card_counts[card.name] -= 1
@@ -141,7 +127,6 @@ func remove_from_inventory_by_card(card: Card):
 
 ## Remove a card from the inventory array via index
 func remove_from_inventory_by_index(index: int):
-	print("removing item from inventory 2")
 	if inventory.size() > index:
 		card_counts[inventory[index].name] -= 1
 		inventory.pop_at(index)
@@ -157,6 +142,7 @@ func clear_inventory() -> void:
 ## Incrememnt the kill count
 func increment_kills(count: int = 0):
 	kills += count
+	kills_since_card += 1
 
 ## Gets the kill count
 func get_kills() -> int:
@@ -173,6 +159,10 @@ func reset_time_elapsed():
 ## Gets the time elapsed
 func get_time_elapsed() -> float:
 	return time_elapsed
+
+
+func reset_kills_since_card() -> void:
+	kills_since_card = 0
 
 
 func update_buffs():

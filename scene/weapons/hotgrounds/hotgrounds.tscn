@@ -45,6 +45,7 @@ radius = 14.0
 [node name="Hotgrounds" type="Node2D"]
 script = ExtResource("1_a8e4p")
 base_damage = 5
+can_hurt = PackedStringArray("Slime", "Snowman")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_13fbb")

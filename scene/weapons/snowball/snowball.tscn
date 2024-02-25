@@ -9,6 +9,7 @@ radius = 2.0
 [node name="Snowball" type="Node2D"]
 script = ExtResource("1_ydl1u")
 base_damage = 5
+can_hurt = PackedStringArray("FlyingSkull", "Bat")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_8mdu4")

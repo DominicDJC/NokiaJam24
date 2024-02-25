@@ -4,6 +4,8 @@ class_name Enemy2D extends CharacterBody2D
 
 ## Signals when hurting has stopped
 signal hurting_stopped
+## The type of enemy
+@export var type: String
 ## The enemies animated sprite 2D
 @export var animated_sprite: AnimatedSprite2D
 ## The maximum amount of health the enemy can have
@@ -28,8 +30,10 @@ var _virtual_position: Vector2
 var _attack_cooldown: float = 0.0
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 var _queue_free_cooldown: float = 15.0
+var _visible_reset_cooldown: float = 5.0
 
 const CARD = preload("res://scene/card/card.tscn")
+const HEART = preload("res://scene/heart/heart.tscn")
 
 
 func _ready() -> void:
@@ -40,6 +44,14 @@ func _physics_process(delta: float) -> void:
 	if active:
 		_physics()
 		_animation()
+		if _is_visible():
+			_visible_reset_cooldown = 5.0
+		else:
+			_visible_reset_cooldown -= delta
+			if _visible_reset_cooldown < 0:
+				_virtual_position = _get_spawn_position()
+				global_position = _virtual_position
+				_visible_reset_cooldown = 5.0
 	else:
 		_queue_free_cooldown -= delta
 		if _queue_free_cooldown < 0:
@@ -54,22 +66,22 @@ func _physics_process(delta: float) -> void:
 
 ## The initalizing script. Deactivates if active, assigns player,
 ## moves to spawn position, activates
-func init(new_player: Player, new_position: Vector2) -> void:
+func init(new_player: Player) -> void:
 	if active:
 		deactivate()
 	player = new_player
-	global_position = new_position
+	global_position = _get_spawn_position()
 	_virtual_position = position
 	activate()
 
 ## Hurts the enemy with the given damage
 func hurt(damage):
-	if active:
+	if active and !hurting:
 		hurting = true
 		health.hurt(damage)
 		if health.get_health() <= 0:
 			kill()
-	print(health.get_health())
+		print(type + ": " + str(health.get_health()))
 
 ## Kills the enemy. Incrementing kills and deactivating
 func kill():
@@ -83,7 +95,7 @@ func activate():
 	health = Health.new(0, max_health)
 	_attack_cooldown = attack_cooldown_start_time
 	active = true
-	visible = true
+	#visible = true
 	set_collision_layer_value(2, true)
 	set_collision_mask_value(2, true)
 	set_collision_layer_value(3, false)
@@ -122,6 +134,7 @@ func _set_hurting(new_value):
 
 
 func _physics():
+	visible = true
 	if !player or Global.frozen:
 		return
 	var angle = global_position.angle_to_point(player.global_position)
@@ -154,7 +167,7 @@ func _animation():
 
 
 func _attempt_card() -> void:
-	if _rng.randi_range(1, 5) == 5:
+	if _rng.randi_range(1, 10) == 1 or Global.kills_since_card > 14:
 		var list_of_potential_cards: Array = []
 		var card_counts: Dictionary = Global.card_counts
 		for key in card_counts:
@@ -162,9 +175,43 @@ func _attempt_card() -> void:
 				list_of_potential_cards.append(key)
 		var type = list_of_potential_cards[_rng.randi_range(0, list_of_potential_cards.size() - 1)]
 		_create_card(Global.cards[type])
+		Global.reset_kills_since_card()
+	else:
+		_attempt_heart()
 
 
 func _create_card(card: Card) -> void:
 	var c = CARD.instantiate()
 	c.init(card, global_position)
 	Global.game.add_child(c)
+
+
+func _attempt_heart() -> void:
+	if _rng.randi_range(1, 6) == 1:
+		var h = HEART.instantiate()
+		h.init(global_position)
+		Global.game.add_child(h)
+
+
+func _get_spawn_position() -> Vector2:
+	var player_position = player.global_position
+	var spawn_position = Vector2(0, 0)
+	match _rng.randi_range(0, 3):
+		0: # above
+			spawn_position.x = player_position.x + _rng.randi_range(-60, 60)
+			spawn_position.y = player_position.y + 40
+		1: # below
+			spawn_position.x = player_position.x + _rng.randi_range(-60, 60)
+			spawn_position.y = player_position.y - 40
+		2: # right
+			spawn_position.x = player_position.x + 60
+			spawn_position.y = player_position.y + _rng.randi_range(-40, 40)
+		3: # left
+			spawn_position.x = player_position.x - 60
+			spawn_position.y = player_position.y + _rng.randi_range(-40, 40)
+	return spawn_position
+
+
+func _is_visible() -> bool:
+	var distance: Vector2 = Vector2(global_position.x - player.global_position.x, global_position.y - player.global_position.y)
+	return !(abs(distance.x) > 50 or abs(distance.y) > 30)

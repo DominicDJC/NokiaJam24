@@ -20,11 +20,12 @@ func _process(delta):
 	elif !Global.frozen and ingameui.active:
 		ingameui.deactivate()
 	
-	Global.increment_time_elapsed(delta)
+	if !Global.frozen:
+		Global.increment_time_elapsed(delta)
 	
 	#Debug code, please remove before release
-	if Input.is_action_just_pressed("key_9"):
-		emit_gameover()
+	#if Input.is_action_just_pressed("key_9"):
+		#emit_gameover()
 
 
 func emit_gameover():

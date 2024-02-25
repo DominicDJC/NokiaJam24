@@ -65,6 +65,7 @@ visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_lt7fx")
+type = "FlyingSkull"
 animated_sprite = NodePath("Flyingskull")
 max_health = 20
 damage = 6

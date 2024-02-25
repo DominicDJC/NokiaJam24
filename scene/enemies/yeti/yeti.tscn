@@ -1,19 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://crd34hqstjxui"]
+[gd_scene load_steps=12 format=3 uid="uid://crd34hqstjxui"]
 
 [ext_resource type="Script" path="res://scene/enemies/yeti/yeti.gd" id="1_xj1g1"]
-[ext_resource type="Texture2D" uid="uid://bvwistgotraj8" path="res://assets/img/enemies/zombie.png" id="2_wf673"]
 [ext_resource type="Texture2D" uid="uid://dyhi0k73j4qq2" path="res://assets/img/enemies/yeti.png" id="3_eospj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nkpgv"]
-atlas = ExtResource("2_wf673")
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ji5"]
+atlas = ExtResource("3_eospj")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_37mjv"]
-atlas = ExtResource("2_wf673")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8lo3"]
+atlas = ExtResource("3_eospj")
 region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uk0id"]
-atlas = ExtResource("2_wf673")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ivdhq"]
+atlas = ExtResource("3_eospj")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2duqd"]
@@ -32,13 +31,13 @@ region = Rect2(32, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nkpgv")
+"texture": SubResource("AtlasTexture_n7ji5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_37mjv")
+"texture": SubResource("AtlasTexture_m8lo3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uk0id")
+"texture": SubResource("AtlasTexture_ivdhq")
 }, {
 "duration": 1.0,
 "texture": null
@@ -62,9 +61,8 @@ animations = [{
 "speed": 7.5
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfd77"]
-radius = 4.0
-height = 10.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_7i1vw"]
+radius = 5.09902
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_td8pf"]
 radius = 4.0
@@ -74,6 +72,7 @@ visible = false
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_xj1g1")
+type = "Yeti"
 animated_sprite = NodePath("Yeti")
 max_health = 20
 damage = 6
@@ -85,11 +84,12 @@ animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
-shape = SubResource("CapsuleShape2D_lfd77")
+shape = SubResource("CircleShape2D_7i1vw")
 
 [node name="AttackArea2D" type="Area2D" parent="."]
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea2D"]
+position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_td8pf")
 
 [connection signal="body_entered" from="AttackArea2D" to="." method="_on_attack_area_2d_body_entered"]

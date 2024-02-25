@@ -40,13 +40,12 @@ func _physics_process(delta):
 func hurt(damage):
 	_hurting = true
 	health.hurt(damage * ((4 - Global.buffs["defense"]) / 3.0))
-	print("Player health: " + str(health.get_health()))
 	if health.get_health() <= 0:
 		kill()
 
 
 func kill():
-	print("Player should have died here")
+	get_parent().emit_gameover()
 
 
 func pickup(card: Card) -> void:

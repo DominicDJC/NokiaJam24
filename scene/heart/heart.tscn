@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://biqeov6tdihki"]
+
+[ext_resource type="Texture2D" uid="uid://1j08hlbj5brv" path="res://assets/img/heart/heart.png" id="1_cr4aq"]
+[ext_resource type="Script" path="res://scene/heart/heart.gd" id="2_pimqb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2yrq"]
+atlas = ExtResource("1_cr4aq")
+region = Rect2(0, 0, 5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1fa7"]
+atlas = ExtResource("1_cr4aq")
+region = Rect2(5, 0, 5, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6offa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2yrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1fa7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o0k0r"]
+radius = 4.0
+
+[node name="Heart" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_6offa")
+autoplay = "default"
+script = ExtResource("2_pimqb")
+
+[node name="PickupRange" type="Area2D" parent="."]
+
+[node name="PickupRangeCollision" type="CollisionShape2D" parent="PickupRange"]
+shape = SubResource("CircleShape2D_o0k0r")
+
+[connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]

@@ -3,13 +3,17 @@ class_name Weapon extends Node2D
 signal ready_to_delete
 @export var player: Player
 @export var base_damage: int = 0
+@export var can_hurt: PackedStringArray
 var can_delete: bool = true : set = _set_can_delete
 var _is_deleting: bool = false
 
 
 func attack_enemy(body: CharacterBody2D):
 	if !(body is Player):
-		body.hurt(base_damage * Global.buffs["damage"])
+		if can_hurt.has(body.type):
+			body.hurt(base_damage * Global.buffs["damage"])
+		else:
+			body.hurt(3 * Global.buffs["damage"])
 
 
 func delete(loadout: Node2D) -> void:

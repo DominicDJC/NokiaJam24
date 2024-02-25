@@ -181,4 +181,6 @@ player = NodePath("../Player")
 
 [node name="CardPickup" parent="UICanvasLayer" instance=ExtResource("11_mc2mk")]
 
-[node name="In-Game UI" parent="UICanvasLayer" instance=ExtResource("10_dhnfl")]
+[node name="In-Game UI" parent="UICanvasLayer" node_paths=PackedStringArray("player", "card_pickup") instance=ExtResource("10_dhnfl")]
+player = NodePath("../../Player")
+card_pickup = NodePath("../CardPickup")
