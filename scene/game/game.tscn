@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6giusprlr2fb"]
+[gd_scene load_steps=18 format=3 uid="uid://c6giusprlr2fb"]
 
 [ext_resource type="Texture2D" uid="uid://bjy06hfqok0au" path="res://assets/img/tilesets/brick_walls_light.png" id="1_jdasb"]
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_nispk"]
@@ -11,8 +11,6 @@
 [ext_resource type="Script" path="res://scene/game/Spawner.gd" id="7_et3kj"]
 [ext_resource type="PackedScene" uid="uid://bhcy5fgbb6s73" path="res://scene/UI/In-Game/in_game_ui.tscn" id="10_dhnfl"]
 [ext_resource type="PackedScene" uid="uid://bp280f7apr6b" path="res://scene/UI/CardPickup/card_pickup.tscn" id="11_mc2mk"]
-[ext_resource type="PackedScene" uid="uid://dy5x2nj2i5uqx" path="res://scene/card/card.tscn" id="12_l6uqi"]
-[ext_resource type="Resource" uid="uid://caso2mh78xicr" path="res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres" id="13_u5gp6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysga3"]
 texture = ExtResource("1_jdasb")
@@ -184,7 +182,3 @@ player = NodePath("../Player")
 [node name="CardPickup" parent="UICanvasLayer" instance=ExtResource("11_mc2mk")]
 
 [node name="In-Game UI" parent="UICanvasLayer" instance=ExtResource("10_dhnfl")]
-
-[node name="Card" parent="." instance=ExtResource("12_l6uqi")]
-position = Vector2(49.41, -1)
-card = ExtResource("13_u5gp6")

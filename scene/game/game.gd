@@ -6,6 +6,7 @@ signal gameover
 
 
 func _ready():
+	Global.game = self
 	Global.reset_time_elapsed()
 	Global.clear_inventory()
 	Global.add_to_inventory(load("res://scene/resources/Data/Cards/Weapons/Snowball.tres"))

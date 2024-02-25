@@ -3,6 +3,8 @@ extends Node
 # Starting card
 #var snowball = preload("res://scene/resources/Data/Cards/Weapons/Snowball.tres")
 
+## The game Node2D
+var game: Node2D
 ## Whether or not time is frozen
 var frozen: bool = true
 ## The 1st card equipped
@@ -25,6 +27,17 @@ var buffs: Dictionary = {
 	"defense":0,
 	"time":0,
 }
+var card_counts: Dictionary = {
+	"Attack Up": 0,
+	"Shield Up": 0,
+	"Health Up": 0,
+	"Speed Up": 0,
+	"Slow Time": 0,
+	"Hot Grounds": 0,
+	"Ice Axe": 0,
+	"Ice Pick": 0,
+	"Snowball": 0,
+}
 
 const BAT = preload("res://scene/resources/Data/Enemies/Bat.tres")
 const FLYING_SKULL = preload("res://scene/resources/Data/Enemies/FlyingSkull.tres")
@@ -34,6 +47,18 @@ const SNOWMAN = preload("res://scene/resources/Data/Enemies/Snowman.tres")
 const WOLF = preload("res://scene/resources/Data/Enemies/Wolf.tres")
 const YETI = preload("res://scene/resources/Data/Enemies/Yeti.tres")
 const ZOMBIE = preload("res://scene/resources/Data/Enemies/Zombie.tres")
+
+const cards: Dictionary = {
+	"Attack Up": preload("res://scene/resources/Data/Cards/Buffs/Attack.tres"),
+	"Shield Up": preload("res://scene/resources/Data/Cards/Buffs/Defense.tres"),
+	"Health Up": preload("res://scene/resources/Data/Cards/Buffs/Health.tres"),
+	"Speed Up": preload("res://scene/resources/Data/Cards/Buffs/Speed.tres"),
+	"Slow Time": preload("res://scene/resources/Data/Cards/Buffs/Time.tres"),
+	"Hot Grounds": preload("res://scene/resources/Data/Cards/Weapons/Hot Grounds.tres"),
+	"Ice Axe": preload("res://scene/resources/Data/Cards/Weapons/Ice Axe.tres"),
+	"Ice Pick": preload("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres"),
+	"Snowball": preload("res://scene/resources/Data/Cards/Weapons/Snowball.tres"),
+}
 
 
 # TEMP
@@ -103,18 +128,22 @@ func get_equipped() -> Array:
 ## Add a card to the inventory array
 func add_to_inventory(new_card: Card):
 	inventory.push_back(new_card)
-	print(inventory)
+	card_counts[new_card.name] += 1
 
 ## Remove a card from the inventory array via card
 func remove_from_inventory_by_card(card: Card):
+	print("removing item from inventory 1")
 	if inventory.has(card):
 		inventory.erase(card)
+		card_counts[card.name] -= 1
 	else:
 		print("Inventory does not contain " + card.name)
 
 ## Remove a card from the inventory array via index
 func remove_from_inventory_by_index(index: int):
+	print("removing item from inventory 2")
 	if inventory.size() > index:
+		card_counts[inventory[index].name] -= 1
 		inventory.pop_at(index)
 
 ## Get inventory array

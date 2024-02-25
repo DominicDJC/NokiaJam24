@@ -26,12 +26,25 @@ var hurting: bool = false : set = _set_hurting
 var active: bool = false
 var _virtual_position: Vector2
 var _attack_cooldown: float = 0.0
+var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
+var _queue_free_cooldown: float = 15.0
+
+const CARD = preload("res://scene/card/card.tscn")
+
+
+func _ready() -> void:
+	_rng.randomize()
 
 
 func _physics_process(delta: float) -> void:
 	if active:
 		_physics()
 		_animation()
+	else:
+		_queue_free_cooldown -= delta
+		if _queue_free_cooldown < 0:
+			get_parent().remove_child(self)
+			queue_free()
 	
 	if !Global.frozen and active:
 		_attack_cooldown -= delta
@@ -62,6 +75,7 @@ func hurt(damage):
 func kill():
 	await hurting_stopped
 	Global.increment_kills()
+	_attempt_card()
 	deactivate()
 
 ## Activates the enemy
@@ -70,11 +84,20 @@ func activate():
 	_attack_cooldown = attack_cooldown_start_time
 	active = true
 	visible = true
+	set_collision_layer_value(2, true)
+	set_collision_mask_value(2, true)
+	set_collision_layer_value(3, false)
+	set_collision_mask_value(3, false)
 
 ## Deactivates the enemy
 func deactivate():
 	active = false
 	visible = false
+	set_collision_layer_value(2, false)
+	set_collision_mask_value(2, false)
+	set_collision_layer_value(3, true)
+	set_collision_mask_value(3, true)
+	_queue_free_cooldown = 15.0
 
 ## A fixed move_and_slide function to deal with
 ## the low pixel count
@@ -128,3 +151,20 @@ func _animation():
 			if !animated_sprite.is_playing():
 				animated_sprite.play()
 			sprite_flipping(animated_sprite)
+
+
+func _attempt_card() -> void:
+	if _rng.randi_range(1, 5) == 5:
+		var list_of_potential_cards: Array = []
+		var card_counts: Dictionary = Global.card_counts
+		for key in card_counts:
+			if card_counts[key] < 3:
+				list_of_potential_cards.append(key)
+		var type = list_of_potential_cards[_rng.randi_range(0, list_of_potential_cards.size() - 1)]
+		_create_card(Global.cards[type])
+
+
+func _create_card(card: Card) -> void:
+	var c = CARD.instantiate()
+	c.init(card, global_position)
+	Global.game.add_child(c)

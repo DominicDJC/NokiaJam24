@@ -16,9 +16,9 @@ const SNOWMAN = preload("res://scene/enemies/snowman/snowman.tscn")
 func _ready():
 	_rng.randomize()
 	#new_enemy("bat")
-	for i in 1:
-		new_enemy("Snowman")
-		await get_tree().create_timer(5).timeout
+	for i in 20:
+		new_enemy("Slime")
+		await get_tree().create_timer(2.5).timeout
 
 
 func new_enemy(type: String):

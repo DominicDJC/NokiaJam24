@@ -26,13 +26,6 @@ var ZOMBIE = load("res://scene/resources/Data/Enemies/Zombie.tres")
 func get_damageable_enemies() -> Array:
 	var enemies = []
 	var data = Global.get_card_enemy_data()
-	#var data = {
-		#"snowball": [FLYING_SKULL, BAT],
-		#"icepick": [ZOMBIE, YETI],
-		#"iceaxe": [WOLF, SNAKE],
-		#"hotgrounds": [SNOWMAN, SLIME]
-	#}
-	print(data)
 	if data.has(weapon):
 		enemies = data[weapon]
 	return enemies

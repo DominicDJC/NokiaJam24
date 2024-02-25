@@ -33,12 +33,15 @@ func open_menu(equipment_index):
 
 func _initialize_card_list():
 	# initialize list of possible card (do not show already equiped)
-	scrolling_cards = []
+	for card in inventory:
+		scrolling_cards.append(card)
 	var equiped = Global.get_equipped()
 	
-	for card in inventory:
-		if not (card in equiped) or card == current_card:
-			scrolling_cards.append(card)
+	for card in equiped:
+		if scrolling_cards.has(card):
+			scrolling_cards.erase(card)
+	if current_card:
+		scrolling_cards.append(current_card)
 
 
 func _process(_delta):
