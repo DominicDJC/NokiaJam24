@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 
 @export var speed = 15
 @export var ingameui: Control
+@export var card_pickup: Control
 
 @onready var _player_sprite = $PlayerSprite
 
@@ -48,12 +49,20 @@ func kill():
 	print("Player should have died here")
 
 
+func pickup(card: Card) -> void:
+	Global.add_to_inventory(card)
+	card_pickup.pickup(card)
+
+
 func _get_input():
-	if !ingameui.in_menu:
+	if !ingameui.in_menu and !card_pickup.picking_up_card:
 		var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
 		moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
 		velocity = input_direction * speed
 		_update_saved_rotation_vector(input_direction)
+	else:
+		moving = false
+		velocity = Vector2(0, 0)
 
 
 func _update_player_sprite():

@@ -2,10 +2,14 @@ extends Node2D
 
 signal gameover
 @export var ingameui: Control
+@export var card_pickup: Control
 
 
 func _ready():
 	Global.reset_time_elapsed()
+	Global.clear_inventory()
+	Global.add_to_inventory(load("res://scene/resources/Data/Cards/Weapons/Snowball.tres"))
+	Global.set_equipcard1(Global.get_inventory()[0])
 
 
 # Handles the in-game ui, showing and hiding when time is frozen

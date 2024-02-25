@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dy5x2nj2i5uqx"]
+
+[ext_resource type="Texture2D" uid="uid://bkv2vctmeylt2" path="res://assets/img/card/card.png" id="1_qvri6"]
+[ext_resource type="Script" path="res://scene/card/card.gd" id="2_tdg6j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5y105"]
+atlas = ExtResource("1_qvri6")
+region = Rect2(0, 0, 4, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auml6"]
+atlas = ExtResource("1_qvri6")
+region = Rect2(4, 0, 4, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyibi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5y105")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auml6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.5
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ddr8f"]
+radius = 5.0
+
+[node name="Card" type="AnimatedSprite2D"]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_yyibi")
+autoplay = "default"
+frame_progress = 0.178015
+script = ExtResource("2_tdg6j")
+
+[node name="PickupRange" type="Area2D" parent="."]
+
+[node name="PickupRangeCollision" type="CollisionShape2D" parent="PickupRange"]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_ddr8f")
+
+[connection signal="body_entered" from="PickupRange" to="." method="_on_pickup_range_body_entered"]

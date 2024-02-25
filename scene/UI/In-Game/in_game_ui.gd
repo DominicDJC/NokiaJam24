@@ -10,7 +10,7 @@ var in_menu: bool = false
 @onready var pause_ap = $GameUI/AnimationPlayer
 
 ## Current active state. Used by the game node in game.tscn
-var active = true
+var active = false
 
 func _ready() -> void:
 	menus.close_menu.connect(_close_menu)

@@ -19,27 +19,28 @@ func open_menu(equipment_index):
 	e_index = equipment_index
 	inventory = Global.get_inventory()
 	current_card = Global.get_equipped()[e_index]
+	_initialize_card_list()
 	
 	if current_card == null:
-		current_card = Global.get_inventory()[0]
+		current_card = scrolling_cards[0]
 		
-	current_card_index = inventory.find(current_card)
+	current_card_index = scrolling_cards.find(current_card)
 	_set_current_card()
-	_initialize_card_list()
 	# Ugly but without this, return button is automatically pressed when entering menu
 	await get_tree().create_timer(0.1).timeout
 	in_menu = true
-	
+
+
 func _initialize_card_list():
 	# initialize list of possible card (do not show already equiped)
 	scrolling_cards = []
-	var all_inventory = Global.get_inventory()
 	var equiped = Global.get_equipped()
 	
-	for card in all_inventory:
+	for card in inventory:
 		if not (card in equiped) or card == current_card:
 			scrolling_cards.append(card)
-	
+
+
 func _process(_delta):
 	if in_menu:
 		if Input.is_action_just_pressed("key_0"):
@@ -57,7 +58,7 @@ func _process(_delta):
 			
 
 func _set_current_card():
-	current_card = inventory[current_card_index]
+	current_card = scrolling_cards[current_card_index]
 	card_display.texture = current_card.card_texture
 	card_description.text = current_card.description
 	
@@ -71,13 +72,13 @@ func _set_current_card():
 		
 func _next_card():
 	current_card_index += 1
-	if current_card_index >= len(inventory):
+	if current_card_index >= len(scrolling_cards):
 		current_card_index = 0
 	_set_current_card()
 	
 func _prev_card():
 	current_card_index -= 1
 	if current_card_index < 0:
-		len(inventory) - 1
+		current_card_index = len(scrolling_cards) - 1
 	_set_current_card()
 	
