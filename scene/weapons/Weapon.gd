@@ -8,12 +8,13 @@ var can_delete: bool = true : set = _set_can_delete
 var _is_deleting: bool = false
 
 
-func attack_enemy(body: CharacterBody2D):
+func attack_enemy(body):
 	if !(body is Player):
-		if can_hurt.has(body.type):
-			body.hurt(base_damage * Global.buffs["damage"])
-		else:
-			body.hurt(3 * Global.buffs["damage"])
+		if body is CharacterBody2D:
+			if can_hurt.has(body.type):
+				body.hurt(base_damage * Global.buffs["damage"])
+			else:
+				body.hurt(3 * Global.buffs["damage"])
 
 
 func delete(loadout: Node2D) -> void:

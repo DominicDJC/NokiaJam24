@@ -2,9 +2,14 @@ extends AnimatedSprite2D
 
 @export var value: int = 5
 @export var pickup_sound: AudioStream
+var _self_distruct_timer: float = 30.0
 
 
 func _physics_process(delta: float) -> void:
+	_self_distruct_timer -= delta
+	if _self_distruct_timer <= 0:
+		get_parent().remove_child(self)
+		queue_free()
 	if Global.frozen and is_playing():
 		pause()
 	elif !Global.frozen and !is_playing():

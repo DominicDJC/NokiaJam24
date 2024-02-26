@@ -26,8 +26,6 @@ func _physics_process(delta: float) -> void:
 		# Start with 10, go up 1 every 30 secs
 		_desired_enemy_count = (Global.time_elapsed / 15) + 10
 		_max_cooldown = 2 - pow(Global.time_elapsed / 430, 2)
-		print(_desired_enemy_count)
-		print(_max_cooldown)
 		_cooldown -= delta
 		if _cooldown < 0 and _total_enemies() < _desired_enemy_count:
 			_cooldown = _max_cooldown

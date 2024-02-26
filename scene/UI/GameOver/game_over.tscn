@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://rb7f745yd555"]
+[gd_scene load_steps=19 format=3 uid="uid://rb7f745yd555"]
 
 [ext_resource type="Script" path="res://scene/UI/GameOver/game_over.gd" id="1_3ak5j"]
 [ext_resource type="Texture2D" uid="uid://bmnc7rokelj5j" path="res://assets/img/UI/GameOver/game_over_screen.png" id="1_retd4"]
+[ext_resource type="AudioStream" uid="uid://u4eg3a8qhfj4" path="res://assets/sound/negative1.wav" id="2_37ger"]
 [ext_resource type="Texture2D" uid="uid://yjn6tyko0ve7" path="res://assets/img/UI/GameOver/game_over_logo.png" id="2_ath1m"]
 [ext_resource type="Texture2D" uid="uid://deycvp0imtsod" path="res://assets/img/UI/TitleScreen/snow/snow1.png" id="3_q7pp4"]
 [ext_resource type="Texture2D" uid="uid://c7jr6wvaqmbfj" path="res://assets/img/UI/TitleScreen/snow/snow2.png" id="4_np3l0"]
@@ -82,6 +83,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3ak5j")
+gameover_sound = ExtResource("2_37ger")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

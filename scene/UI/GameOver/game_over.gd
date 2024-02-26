@@ -1,11 +1,13 @@
 extends Control
 
 signal done
+@export var gameover_sound: AudioStream
 var _locked = true
 
 
 func _ready() -> void:
 	await get_tree().create_timer(.05).timeout
+	Global.play_audio(gameover_sound)
 	_locked = false
 
 
