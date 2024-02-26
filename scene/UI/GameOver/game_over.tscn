@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://rb7f745yd555"]
+[gd_scene load_steps=18 format=3 uid="uid://rb7f745yd555"]
 
+[ext_resource type="Script" path="res://scene/UI/GameOver/game_over.gd" id="1_3ak5j"]
 [ext_resource type="Texture2D" uid="uid://bmnc7rokelj5j" path="res://assets/img/UI/GameOver/game_over_screen.png" id="1_retd4"]
 [ext_resource type="Texture2D" uid="uid://yjn6tyko0ve7" path="res://assets/img/UI/GameOver/game_over_logo.png" id="2_ath1m"]
 [ext_resource type="Texture2D" uid="uid://deycvp0imtsod" path="res://assets/img/UI/TitleScreen/snow/snow1.png" id="3_q7pp4"]
@@ -11,6 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://cow7isyh03gso" path="res://assets/img/UI/TitleScreen/snow/snow7.png" id="9_y67xk"]
 [ext_resource type="Texture2D" uid="uid://bvwojjb5aghqp" path="res://assets/img/UI/TitleScreen/snow/snow8.png" id="10_h5g2l"]
 [ext_resource type="Texture2D" uid="uid://dgo31yfjycsb4" path="res://assets/img/UI/TitleScreen/transition.png" id="11_1u6be"]
+
+[sub_resource type="Animation" id="Animation_0br8x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Transition:texture:region")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 384, 84, 48)]
+}
 
 [sub_resource type="Animation" id="Animation_sr3tk"]
 resource_name = "transition"
@@ -27,21 +43,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Rect2(0, 384, 84, 48), Rect2(0, 336, 84, 48), Rect2(0, 288, 84, 48), Rect2(0, 240, 84, 48), Rect2(0, 192, 84, 48), Rect2(0, 144, 84, 48), Rect2(0, 96, 84, 48), Rect2(0, 48, 84, 48)]
-}
-
-[sub_resource type="Animation" id="Animation_0br8x"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Transition:texture:region")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 384, 84, 48)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p225u"]
@@ -80,6 +81,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3ak5j")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -123,12 +125,14 @@ libraries = {
 autoplay = "transition"
 
 [node name="Snow" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 84.0
 offset_bottom = 48.0
 texture = SubResource("AnimatedTexture_cvfuh")
 stretch_mode = 2
 
 [node name="Transition" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 84.0
 offset_bottom = 48.0
 texture = SubResource("AtlasTexture_dn65i")

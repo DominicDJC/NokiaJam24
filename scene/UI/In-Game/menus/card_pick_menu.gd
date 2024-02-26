@@ -50,6 +50,7 @@ func _initialize_card_list():
 func _process(_delta):
 	if in_menu:
 		if Input.is_action_just_pressed("key_0"):
+			Global.ui_sound()
 			var equipped = Global.get_equipped()
 			equipped[e_index] = current_card
 			Global.set_equipped(equipped)
@@ -57,9 +58,11 @@ func _process(_delta):
 			in_menu = false
 
 		elif Input.is_action_just_pressed("key_6"):
+			Global.ui_sound()
 			_next_card()
 				
 		elif Input.is_action_just_pressed("key_4"):
+			Global.ui_sound()
 			_prev_card()
 			
 

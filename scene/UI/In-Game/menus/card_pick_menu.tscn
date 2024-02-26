@@ -42,8 +42,8 @@ region = Rect2(4, 51, 7, 9)
 atlas = ExtResource("2_qgj80")
 region = Rect2(36, 51, 7, 9)
 
-[sub_resource type="Animation" id="Animation_c15ny"]
-resource_name = "Right"
+[sub_resource type="Animation" id="Animation_onxll"]
+resource_name = "Left"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -55,7 +55,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(9, 4), Vector2(7, 4)]
+"values": [Vector2(5, 4), Vector2(7, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_6fcdy"]
@@ -73,8 +73,8 @@ tracks/0/keys = {
 "values": [Vector2(7, 4)]
 }
 
-[sub_resource type="Animation" id="Animation_onxll"]
-resource_name = "Left"
+[sub_resource type="Animation" id="Animation_c15ny"]
+resource_name = "Right"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -86,7 +86,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(5, 4), Vector2(7, 4)]
+"values": [Vector2(9, 4), Vector2(7, 4)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_teaxc"]

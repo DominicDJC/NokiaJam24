@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://biqeov6tdihki"]
+[gd_scene load_steps=8 format=3 uid="uid://biqeov6tdihki"]
 
 [ext_resource type="Texture2D" uid="uid://1j08hlbj5brv" path="res://assets/img/heart/heart.png" id="1_cr4aq"]
 [ext_resource type="Script" path="res://scene/heart/heart.gd" id="2_pimqb"]
+[ext_resource type="AudioStream" uid="uid://cgr6srlgjf8gl" path="res://assets/sound/blip5.wav" id="3_j23w6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k2yrq"]
 atlas = ExtResource("1_cr4aq")
@@ -32,6 +33,7 @@ radius = 4.0
 sprite_frames = SubResource("SpriteFrames_6offa")
 autoplay = "default"
 script = ExtResource("2_pimqb")
+pickup_sound = ExtResource("3_j23w6")
 
 [node name="PickupRange" type="Area2D" parent="."]
 

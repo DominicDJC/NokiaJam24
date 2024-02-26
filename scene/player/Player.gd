@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @export var speed = 15
 @export var ingameui: Control
 @export var card_pickup: Control
+@export var hit_sound: AudioStream
 
 @onready var _player_sprite = $PlayerSprite
 
@@ -11,8 +12,9 @@ var health = Health.new(0, 20)
 var moving = false
 var saved_rotation_vector: Vector2 = Vector2(1, 0)
 var _virtual_position = Vector2(0.0, 0.0)
-var _cooldown = 0.0
+var _cooldown = 0.3
 var _hurting = false
+var _hurt_source: CharacterBody2D
 
 
 func _physics_process(delta):
@@ -37,11 +39,13 @@ func _physics_process(delta):
 		Global.freeze()
 
 
-func hurt(damage):
+func hurt(damage, new_hurt_source):
 	_hurting = true
+	_hurt_source = new_hurt_source
 	health.hurt(damage * ((4 - Global.buffs["defense"]) / 3.0))
 	if health.get_health() <= 0:
 		kill()
+	Global.play_audio(hit_sound)
 
 
 func kill():
@@ -57,7 +61,12 @@ func _get_input():
 	if !ingameui.in_menu and !card_pickup.picking_up_card:
 		var input_direction = Input.get_vector("key_4", "key_6", "key_2", "key_8")
 		moving = (input_direction != Vector2(0, 0)) or (Input.is_action_pressed("key_5"))
-		velocity = input_direction * speed
+		if _hurting:
+			var angle = global_position.angle_to_point(_hurt_source.global_position)
+			velocity = Vector2(cos(angle), sin(angle))
+			velocity = velocity * -40
+		else:
+			velocity = input_direction * speed
 		_update_saved_rotation_vector(input_direction)
 	else:
 		moving = false
@@ -85,12 +94,13 @@ func _update_player_sprite():
 
 
 func _sprite_flipping():
-	if velocity.x > 0:
-		_player_sprite.flip_h = false
-		_player_sprite.offset.x = 0
-	elif velocity.x < 0:
-		_player_sprite.flip_h = true
-		_player_sprite.offset.x = 2
+	if !_hurting:
+		if velocity.x > 0:
+			_player_sprite.flip_h = false
+			_player_sprite.offset.x = 0
+		elif velocity.x < 0:
+			_player_sprite.flip_h = true
+			_player_sprite.offset.x = 2
 
 
 func _update_saved_rotation_vector(input_direction) -> void:

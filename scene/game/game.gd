@@ -6,6 +6,7 @@ signal gameover
 
 
 func _ready():
+	Global.stop_audio()
 	Global.game = self
 	Global.reset_time_elapsed()
 	Global.clear_inventory()

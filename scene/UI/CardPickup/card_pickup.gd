@@ -1,5 +1,7 @@
 extends Control
 
+@export var pickup_sound: AudioStream
+@export var away_sound: AudioStream
 var picking_up_card: bool = false
 var _is_put_away: bool = false
 var allowing_input: bool = false
@@ -19,6 +21,7 @@ func _physics_process(delta: float) -> void:
 
 
 func pickup(card: Card) -> void:
+	Global.play_audio(pickup_sound)
 	visible = true
 	allowing_input = true
 	picking_up_card = true
@@ -28,6 +31,7 @@ func pickup(card: Card) -> void:
 	await animation_player.animation_finished
 	await get_tree().create_timer(1).timeout
 	if !_is_put_away:
+		Global.play_audio(away_sound)
 		_is_put_away = true
 		allowing_input = false
 		animation_player.play("put_away")
@@ -37,6 +41,7 @@ func pickup(card: Card) -> void:
 
 
 func put_away() -> void:
+	Global.play_audio(away_sound)
 	_is_put_away = true
 	allowing_input = false
 	animation_player.stop()

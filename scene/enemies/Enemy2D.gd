@@ -34,6 +34,7 @@ var _visible_reset_cooldown: float = 5.0
 
 const CARD = preload("res://scene/card/card.tscn")
 const HEART = preload("res://scene/heart/heart.tscn")
+const BLIP_4 = preload("res://assets/sound/blip4.wav")
 
 
 func _ready() -> void:
@@ -61,7 +62,7 @@ func _physics_process(delta: float) -> void:
 	if !Global.frozen and active:
 		_attack_cooldown -= delta
 		if _attack_cooldown <= 0 and contains_player:
-			player.hurt(damage)
+			player.hurt(damage, self)
 			_attack_cooldown = attack_cooldown_start_time
 
 ## The initalizing script. Deactivates if active, assigns player,
@@ -81,13 +82,16 @@ func hurt(damage):
 		health.hurt(damage)
 		if health.get_health() <= 0:
 			kill()
-		print(type + ": " + str(health.get_health()))
+		Global.play_audio(BLIP_4)
 
 ## Kills the enemy. Incrementing kills and deactivating
 func kill():
 	await hurting_stopped
 	Global.increment_kills()
-	_attempt_card()
+	if _rng.randi_range(0, 1) == 0:
+		_attempt_card()
+	else:
+		_attempt_heart()
 	deactivate()
 
 ## Activates the enemy
@@ -167,17 +171,15 @@ func _animation():
 
 
 func _attempt_card() -> void:
-	if _rng.randi_range(1, 10) == 1 or Global.kills_since_card > 14:
+	if _rng.randi_range(1, 5) == 1 or Global.kills_since_card > 14:
 		var list_of_potential_cards: Array = []
 		var card_counts: Dictionary = Global.card_counts
 		for key in card_counts:
-			if card_counts[key] < 3:
+			if card_counts[key] + Global.world_card_counts[key] < 3:
 				list_of_potential_cards.append(key)
 		var type = list_of_potential_cards[_rng.randi_range(0, list_of_potential_cards.size() - 1)]
 		_create_card(Global.cards[type])
 		Global.reset_kills_since_card()
-	else:
-		_attempt_heart()
 
 
 func _create_card(card: Card) -> void:
@@ -187,7 +189,7 @@ func _create_card(card: Card) -> void:
 
 
 func _attempt_heart() -> void:
-	if _rng.randi_range(1, 6) == 1:
+	if _rng.randi_range(1, 5) == 1:
 		var h = HEART.instantiate()
 		h.init(global_position)
 		Global.game.add_child(h)

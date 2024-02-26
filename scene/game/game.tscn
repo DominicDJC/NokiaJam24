@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6giusprlr2fb"]
+[gd_scene load_steps=19 format=3 uid="uid://c6giusprlr2fb"]
 
 [ext_resource type="Texture2D" uid="uid://bjy06hfqok0au" path="res://assets/img/tilesets/brick_walls_light.png" id="1_jdasb"]
 [ext_resource type="Script" path="res://scene/game/game.gd" id="1_nispk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dsf8okjtvgivm" path="res://assets/img/tilesets/nature.png" id="4_il6hn"]
 [ext_resource type="Script" path="res://scene/game/Loadout.gd" id="6_w7a12"]
 [ext_resource type="Script" path="res://scene/game/Spawner.gd" id="7_et3kj"]
+[ext_resource type="AudioStream" uid="uid://b0f1076w41b7f" path="res://assets/sound/blip14.wav" id="8_awl54"]
 [ext_resource type="PackedScene" uid="uid://bhcy5fgbb6s73" path="res://scene/UI/In-Game/in_game_ui.tscn" id="10_dhnfl"]
 [ext_resource type="PackedScene" uid="uid://bp280f7apr6b" path="res://scene/UI/CardPickup/card_pickup.tscn" id="11_mc2mk"]
 
@@ -167,6 +168,7 @@ player = NodePath("../Player")
 [node name="Player" parent="." node_paths=PackedStringArray("ingameui", "card_pickup") instance=ExtResource("2_np5c5")]
 ingameui = NodePath("../UICanvasLayer/In-Game UI")
 card_pickup = NodePath("../UICanvasLayer/CardPickup")
+hit_sound = ExtResource("8_awl54")
 
 [node name="MainCamera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_avj8l")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpql08rl1f32q"]
+
+[ext_resource type="Script" path="res://scene/stats/stats.gd" id="1_6m5nr"]
+[ext_resource type="FontFile" uid="uid://djah1i7xp3xuf" path="res://assets/fonts/tiny/tiny.ttf" id="2_opdcu"]
+
+[node name="Stats" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 84.0
+offset_bottom = 48.0
+script = ExtResource("1_6m5nr")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Time" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("2_opdcu")
+theme_override_font_sizes/font_size = 6
+text = "TIME ELAPSED:"
+horizontal_alignment = 1
+text_overrun_behavior = 1
+
+[node name="Kills" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/line_spacing = 1
+theme_override_fonts/font = ExtResource("2_opdcu")
+theme_override_font_sizes/font_size = 6
+text = "ENEMIES KILLED:"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="Zero" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_opdcu")
+theme_override_font_sizes/font_size = 6
+text = "PRESS 0"
+horizontal_alignment = 1

@@ -6,7 +6,7 @@ extends Node
 ## The game Node2D
 var game: Node2D
 ## Whether or not time is frozen
-var frozen: bool = true
+var frozen: bool = false
 ## The 1st card equipped
 var equipcard1: Card
 ## The 2nd card equipped
@@ -41,6 +41,19 @@ var card_counts: Dictionary = {
 	"Ice Pick": 0,
 	"Snowball": 0,
 }
+## The card count on the map
+var world_card_counts: Dictionary = {
+	"Attack Up": 0,
+	"Shield Up": 0,
+	"Health Up": 0,
+	"Speed Up": 0,
+	#"Slow Time": 0,
+	"Hot Grounds": 0,
+	"Ice Axe": 0,
+	"Ice Pick": 0,
+	"Snowball": 0,
+}
+var audio: AudioStreamPlayer = AudioStreamPlayer.new()
 
 const BAT = preload("res://scene/resources/Data/Enemies/Bat.tres")
 const FLYING_SKULL = preload("res://scene/resources/Data/Enemies/FlyingSkull.tres")
@@ -62,6 +75,12 @@ const cards: Dictionary = {
 	"Ice Pick": preload("res://scene/resources/Data/Cards/Weapons/Ice Pick.tres"),
 	"Snowball": preload("res://scene/resources/Data/Cards/Weapons/Snowball.tres"),
 }
+
+const C_5 = preload("res://assets/sound/C5.wav")
+
+
+func _ready() -> void:
+	add_child(audio)
 
 
 ## Changes frozen to true
@@ -140,7 +159,7 @@ func clear_inventory() -> void:
 	inventory = []
 
 ## Incrememnt the kill count
-func increment_kills(count: int = 0):
+func increment_kills(count: int = 1):
 	kills += count
 	kills_since_card += 1
 
@@ -186,3 +205,17 @@ func get_card_enemy_data() -> Dictionary:
 		"iceaxe": [WOLF, SNAKE],
 		"hotgrounds": [SNOWMAN, SLIME]
 	}
+
+
+func play_audio(track: AudioStream) -> void:
+	stop_audio()
+	audio.stream = track
+	audio.play()
+
+
+func stop_audio() -> void:
+	audio.stop()
+
+
+func ui_sound() -> void:
+	play_audio(C_5)

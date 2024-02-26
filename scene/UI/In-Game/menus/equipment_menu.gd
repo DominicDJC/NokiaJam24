@@ -48,6 +48,7 @@ func _process(_delta):
 	if in_menu:
 		var focus_owner = get_viewport().gui_get_focus_owner()
 		if Input.is_action_just_pressed("key_0"):
+			Global.ui_sound()
 			match focus_owner:
 				return_button:
 					close_menu.emit()
@@ -69,11 +70,13 @@ func _process(_delta):
 						in_menu = false
 		
 		elif Input.is_action_just_pressed("key_6"):
+			Global.ui_sound()
 			var neighbor = focus_owner.find_valid_focus_neighbor(SIDE_RIGHT)
 			if neighbor:
 				neighbor.grab_focus()
 				
 		elif Input.is_action_just_pressed("key_4"):
+			Global.ui_sound()
 			var neighbor = focus_owner.find_valid_focus_neighbor(SIDE_LEFT)
 			if neighbor:
 				neighbor.grab_focus()
